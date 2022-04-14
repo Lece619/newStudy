@@ -5,8 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>newStudyIndex</title>
+    
 </head>
 <body>
-    
+    import java.util.Scanner;
+
+    public class Main {
+        public static void main(String[] args) {
+            Scanner sc = new Scanner(System.in);
+            int Num=sc.nextInt();
+            int StartNum=Num;
+            int cnt=0;
+            while (true) {
+                Num=Num%10*10+(Num/10+Num%10)%10;
+                cnt++;
+                if(Num==StartNum){
+                    System.out.println(cnt);
+                    break;
+                }
+            }
+        }
+    }
 </body>
 </html>
