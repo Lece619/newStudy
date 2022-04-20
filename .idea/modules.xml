@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/backjoon/backjoon.iml" filepath="$PROJECT_DIR$/backjoon/backjoon.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/newStudy.iml" filepath="$PROJECT_DIR$/.idea/newStudy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backjoon/stringBackjoon/stringBackjoon.iml" filepath="$PROJECT_DIR$/backjoon/stringBackjoon/stringBackjoon.iml" />
     </modules>
   </component>
 </project>
