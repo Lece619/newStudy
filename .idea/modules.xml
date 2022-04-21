@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/backjoon/backjoon.iml" filepath="$PROJECT_DIR$/backjoon/backjoon.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backjoon/integerQ/integerQ.iml" filepath="$PROJECT_DIR$/backjoon/integerQ/integerQ.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/newStudy.iml" filepath="$PROJECT_DIR$/.idea/newStudy.iml" />
       <module fileurl="file://$PROJECT_DIR$/backjoon/stringBackjoon/stringBackjoon.iml" filepath="$PROJECT_DIR$/backjoon/stringBackjoon/stringBackjoon.iml" />
     </modules>
