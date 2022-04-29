@@ -5,47 +5,34 @@ $   이항계수(n  m)$의 끝자리 $0$의 개수를 출력하는 프로그램�
 *    input 25 12           output 2
 * */
 import java.util.Scanner;
-//시간초과
 public class Num2004 {
-    public static void main(String[] args) {
-        int num2=0;
-        int num5=0;
-        Scanner sc=new Scanner(System.in);
-        int n=sc.nextInt();
-        int k=sc.nextInt();
-        for(int i=n-k+1;i<=n;i++){
-            int num=i;
-            while(true){
-                if(num%2==0){
-                    num/=2;
-                    num2++;
-                    continue;
-                }
-                if(num%5==0){
-                    num/=5;
-                    num5++;
-                    continue;
-                }
-                break;
-            }
+// 10! 의 소인수 분해 했을 때 2 의 갯수를 생각
+    public static long find2(long num){
+        long cnt=0;
+        while(num>=2){
+            cnt+=num/2;
+            num/=2;
         }
-        for(int i=1;i<=k;i++){
-            int num=i;
-            while(true){
-                if(num%2==0){
-                    num/=2;
-                    num2--;
-                    continue;
-                }
-                if(num%5==0){
-                    num/=5;
-                    num5--;
-                    continue;
-                }
-                break;
-            }
-        }
-        if(num2>num5) System.out.println(num5);
-        else System.out.println(num2);
+        return cnt;
     }
+    public static long find5(long num){
+        long cnt=0;
+        while(num>=5){
+            cnt+=num/5;
+            num/=5;
+        }
+        return cnt;
+    }
+    public static void main(String[] args) {
+        long num2=0;
+        long num5=0;
+        //combination C(n,k)  = n!/k!(n-k)!
+        Scanner sc =new Scanner(System.in);
+        long n=sc.nextLong();
+        long k=sc.nextLong();
+        num2=find2(n)-find2(k)-find2(n-k);
+        num5=find5(n)-find5(k)-find5(n-k);
+        System.out.println(Math.min(num2,num5));
+    }
+
 }
