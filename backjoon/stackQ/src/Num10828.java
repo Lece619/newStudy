@@ -11,17 +11,21 @@ empty: 스택이 비어있으면 1, 아니면 0을 출력한다.
 top: 스택의 가장 위에 있는 정수를 출력한다. 만약 스택에 들어있는 정수가 없는 경우에는 -1을 출력한다.
 * */
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 public class Num10828 {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Stack stack=new Stack();
+        BufferedReader br =new BufferedReader(new InputStreamReader(System.in));
+
         Scanner sc =new Scanner(System.in);
-        int num=sc.nextInt();
-        sc.nextLine();
+        int num=Integer.parseInt(br.readLine());
         String[] order=new String[2];
         for (int i = 0; i <num; i++) {
-            order=sc.nextLine().split(" ");
+            order=br.readLine().split(" ");
             switch (order[0]){
                 case "push":
                     stack.push(Integer.parseInt(order[1]));
