@@ -26,7 +26,7 @@ public class Num4949 {
             String word=sc.nextLine();
             if(word.equals(".")) break;
             Stack<Character> a =new Stack<>();
-            String check=null;
+            String check="yes";
             for (int i = 0; i < word.length(); i++) {
                 char chr=word.charAt(i);
                 if(chr=='('||chr=='['){
@@ -47,9 +47,7 @@ public class Num4949 {
                     }
                 }
             }
-            if(a.isEmpty()){
-                check="yes";
-            }else{
+            if(!a.isEmpty()){
                 check="no";
             }
             System.out.println(check);
