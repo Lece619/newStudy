@@ -21,11 +21,11 @@ public class Num1874 {
         int n = sc.nextInt();
         boolean check = true;
         //기본스텍
-        Stack<Integer> stack1 = new Stack<>();
+        //Stack<Integer> stack1 = new Stack<>();
         Stack<Integer> stack2 = new Stack<>();
         ArrayList<String> result = new ArrayList<>();
 
-        IntStream.range(-n, 0).forEach(value -> stack1.add(-value));
+        //IntStream.range(-n, 0).forEach(value -> stack1.add(-value));
         //IntStream.range(1000,1).forEach(stack1::add);
         int maxNum = 0;
 
@@ -34,9 +34,10 @@ public class Num1874 {
             //입력받은 수가 maxNum 보다 클때
             if (check) {
                 if (num > maxNum) {
-                    for (int j = 0; j < num - maxNum; j++) {  //5  3  7
-                        stack2.push(stack1.pop());
+                    for (int j = maxNum+1; j <= num ; j++) {  //5  3  7
+                        stack2.push(j);
                         result.add("+");
+                        //System.out.println("push: "+j);
                     }
                     maxNum = num;
                 }
