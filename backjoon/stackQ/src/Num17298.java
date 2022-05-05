@@ -17,19 +17,55 @@ import java.util.StringTokenizer;
 public class Num17298 {
     public static void main(String[] args) throws IOException {
 
-        BufferedReader br =new BufferedReader(new InputStreamReader(System.in));
-        int n =Integer.parseInt(br.readLine());
-        StringTokenizer st=new StringTokenizer(br.readLine());
-        int[] result=new int[n];
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(br.readLine());
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int[] result = new int[n];
 
 
         Stack<Integer> stack = new Stack<>();
-        Stack<Integer> stack2= new Stack<>();
+        //Stack<Integer> stack2= new Stack<>();
 
-        for (int i = 0; i < n ; i++) {
-            stack.push(Integer.parseInt(st.nextToken()));
+        for (int i = 0; i < n; i++) {
+            result[i] = Integer.parseInt(st.nextToken());
         }
-        int idx=n-1;
+        //index로 확인
+        for (int i = 0; i < n; i++) {
+            while (!stack.isEmpty() && result[stack.peek()] < result[i]) {
+                result[stack.pop()] = result[i];
+            }
+            stack.push(i);
+        }
+        while(!stack.isEmpty()){
+            result[stack.pop()]=-1;
+        }
+        String total="";
+        for (int i : result) {
+            total+=i+" ";
+        }
+        System.out.println(total);
+    }
+}
+        /*4
+        3 5 2 7 인 경우
+         i=0일때
+         stack 0
+         i=1일때
+         result[stack.peek()= 0] < result[1] 이므로
+         result[0]=result[1]
+         stack 0 => stack 1
+         i=2 일때
+         result[1] > result[2] 이므로
+         그냥 stack 1 2
+         i=3 일때
+         result[2] <result[3] 이므로 result[2]=result[3]
+         result[1] <result[3] 이므로 result[1]=result[3]
+         stack isEmpty 후
+         stack.push(i) 남아있는 stack 원소들은 -1로
+
+        */
+
+/*        int idx=n-1;
         while(!stack.isEmpty()){
             int num = stack.pop();
             if(stack2.isEmpty()){
@@ -52,9 +88,5 @@ public class Num17298 {
                 }
             }
             stack2.push(num);
-        }
-        for (int i : result) {
-            System.out.print(i+" ");
-        }
-    }
-}
+        }*/
+
