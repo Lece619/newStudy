@@ -8,5 +8,53 @@
 *
 * */
 
+import java.util.Scanner;
+import java.util.Stack;
+
 public class Num17298 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] nums = new int[n];
+        String[] number=new String[n];
+        int[] result=new int[n];
+        sc.nextLine();
+        number=sc.nextLine().split(" ");
+        for (int i = 0; i < nums.length; i++) {
+            nums[i]=Integer.parseInt(number[i]);
+            result[i]=-1;
+        }
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = i+1; j < nums.length; j++) {
+                if(nums[i]<nums[j]) {
+                    result[i]=nums[j];
+                    break;
+                }
+            }
+        }
+        for (int i : result) {
+            System.out.print(i+" ");
+        }
+
+//        Stack<Integer> stack = new Stack<>();
+//        Stack<Integer> result= new Stack<>();
+//        int maxNum,currentNum,nextNum;
+//        for (int i = 0; i < n ; i++) {
+//            stack.push(sc.nextInt());
+//        }
+//        result.push(-1);
+//        maxNum=stack.pop();
+//        currentNum=maxNum;
+//        while(!stack.isEmpty()){
+//            nextNum=stack.pop();
+//            if(nextNum>=maxNum){
+//                result.push(-1);
+//                maxNum=nextNum;
+//                continue;
+//            }
+//
+            // 5 3 1 8 6 7 9
+
+        //}
+    }
 }
