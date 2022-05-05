@@ -39,11 +39,12 @@ public class Num17298 {
         while(!stack.isEmpty()){
             result[stack.pop()]=-1;
         }
-        String total="";
+        //String total="";
+        StringBuilder sb = new StringBuilder();
         for (int i : result) {
-            total+=i+" ";
+           sb.append(i).append(" ");
         }
-        System.out.println(total);
+        System.out.println(sb);
     }
 }
         /*4
