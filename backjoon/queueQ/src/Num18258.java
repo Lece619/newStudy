@@ -9,18 +9,27 @@
         front: 큐의 가장 앞에 있는 정수를 출력한다. 만약 큐에 들어있는 정수가 없는 경우에는 -1을 출력한다.
         back: 큐의 가장 뒤에 있는 정수를 출력한다. 만약 큐에 들어있는 정수가 없는 경우에는 -1을 출력한다.*/
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Scanner;
+import java.util.StringTokenizer;
 
 public class Num18258 {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int num = sc.nextInt();
+    public static void main(String[] args) throws IOException {
+//        Scanner sc = new Scanner(System.in);
+//        int num = sc.nextInt();
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int num=Integer.parseInt(br.readLine());
         Q queue = new Q(num);
         for (int i = 0; i < num; i++) {
-            String choice = sc.next();
+            //String choice = sc.next();
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            String choice=st.nextToken();
             switch (choice) {
                 case "push":
-                    int pushNum=sc.nextInt();
+                    //int pushNum=sc.nextInt();
+                    int pushNum=Integer.parseInt(st.nextToken());
                     queue.push(pushNum);
                     break;
                 case "pop":
@@ -40,6 +49,7 @@ public class Num18258 {
                     break;
             }
         }
+        System.out.println(queue.result);
     }
 
 }
@@ -48,6 +58,7 @@ class Q {
     int[] queue;
     int frontIdx = 0;
     int lastIdx = 0;
+    String result="";
 
     public Q(int num) {
         queue = new int[num];
@@ -60,38 +71,47 @@ class Q {
 
     public void pop() {
         if (frontIdx == lastIdx) {
-            System.out.println(-1);
+//            System.out.println(-1);
+            result+="-1\n";
         } else {
-            System.out.println(queue[frontIdx]);
+            //System.out.println(queue[frontIdx]);
+            result+=queue[frontIdx]+"\n";
             frontIdx++;
         }
     }
 
     public void size() {
-        System.out.println(lastIdx - frontIdx);
+        //System.out.println(lastIdx - frontIdx);
+        result+=(lastIdx - frontIdx)+"\n";
     }
 
     public void empty() {
         if (lastIdx == frontIdx) {
-            System.out.println(1);
+//            System.out.println(1);
+            result+="1\n";
         } else {
-            System.out.println(0);
+//            System.out.println(0);
+            result+="0\n";
         }
     }
 
     public void front() {
         if (frontIdx == lastIdx) {
-            System.out.println(-1);
+//            System.out.println(-1);
+            result+="-1\n";
         }else{
-            System.out.println(queue[frontIdx]);
+//            System.out.println(queue[frontIdx]);
+            result+=queue[frontIdx]+"\n";
         }
     }
 
     public void back() {
         if (frontIdx == lastIdx) {
-            System.out.println(-1);
+//            System.out.println(-1);
+            result+="-1\n";
         }else{
-            System.out.println(queue[lastIdx-1]);
+//            System.out.println(queue[lastIdx-1]);
+            result+=queue[lastIdx-1]+"\n";
         }
     }
 }
