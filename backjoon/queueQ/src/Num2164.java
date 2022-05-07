@@ -12,5 +12,18 @@
 N이 주어졌을 때, 제일 마지막에 남게 되는 카드를 구하는 프로그램을 작성하시오.
 * */
 
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+
 public class Num2164 {
+    public static void main(String[] args) {
+        Queue<Integer> queue = new LinkedList<>();
+        Scanner sc = new Scanner(System.in);
+        int n=sc.nextInt();
+        for(int i = 1 ; i < n+1 ;i ++ ){
+            queue.add(i);
+        }
+        
+    }
 }
