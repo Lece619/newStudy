@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/backjoon/backjoon.iml" filepath="$PROJECT_DIR$/backjoon/backjoon.iml" />
       <module fileurl="file://$PROJECT_DIR$/selfProject/cafe/cafe.iml" filepath="$PROJECT_DIR$/selfProject/cafe/cafe.iml" />
+      <module fileurl="file://$PROJECT_DIR$/selfProject/calendarPlaner/calendarPlaner.iml" filepath="$PROJECT_DIR$/selfProject/calendarPlaner/calendarPlaner.iml" />
       <module fileurl="file://$PROJECT_DIR$/backjoon/integerQ/integerQ.iml" filepath="$PROJECT_DIR$/backjoon/integerQ/integerQ.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/newStudy.iml" filepath="$PROJECT_DIR$/.idea/newStudy.iml" />
       <module fileurl="file://$PROJECT_DIR$/backjoon/queueQ/queueQ.iml" filepath="$PROJECT_DIR$/backjoon/queueQ/queueQ.iml" />
