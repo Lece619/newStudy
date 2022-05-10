@@ -24,11 +24,11 @@ public class MainVeiw extends JFrame {
         Button b3 = new Button("b3");
         b2.setPreferredSize(new Dimension(getWidth()/4,getHeight()/4));
 
-//        Button[] buttons = new Button[100];
-//        for (int i = 0; i < buttons.length; i++) {
-//            buttons[i]= new Button(i+"");
-//            buttons[i].setPreferredSize(new Dimension(getWidth()/4,getHeight()/4));
-//        }
+        Button[] buttons = new Button[100];
+        for (int i = 0; i < buttons.length; i++) {
+            buttons[i]= new Button(i+"");
+            buttons[i].setPreferredSize(new Dimension(getWidth()/4,getHeight()/4));
+        }
         GridLayout gridPanel = new GridLayout(2,2);
         GridLayout grid = new GridLayout( 4,2);
         GridBagLayout gbLayout = new GridBagLayout();
@@ -65,17 +65,17 @@ public class MainVeiw extends JFrame {
         gbc.gridwidth=1;
         gbc.gridheight=1;
         add(jp2,gbc);
-        //add(jp3);
+        add(jp3);
 
 
-//        for (int i = 0; i < 10; i++) {
-//            jp4.add(buttons[i+10]);
-//        }
+        for (int i = 0; i < 10; i++) {
+            jp4.add(buttons[i+10]);
+        }
         jp4.setLayout(grid);
         JScrollPane jp =new JScrollPane(jp4);
         jp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        //jp.setVerticalScrollBarPolicy(JScrollPane.WHEN_FOCUSED);
-        //add(jp);
+       // jp.setVerticalScrollBarPolicy(JScrollPane.WHEN_FOCUSED);
+        add(jp4);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
 

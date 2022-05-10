@@ -101,6 +101,7 @@ public class CalendarMaker extends JFrame implements ActionListener {
         calendar.set(Integer.parseInt(year),selectMonth.getSelectedIndex(),1);
         int startday=calendar.get(Calendar.DAY_OF_WEEK)-1;
         int lastDay=calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+        bottomPanel.setVisible(false);
         bottomPanel.removeAll();
         remove(bottomPanel);
         days=new JButton[startday+lastDay];
@@ -114,6 +115,7 @@ public class CalendarMaker extends JFrame implements ActionListener {
             days[i].setVisible(true);
             bottomPanel.add(days[i]);
         }
+        bottomPanel.setVisible(true);
         add(bottomPanel, BorderLayout.SOUTH);
     }
 
