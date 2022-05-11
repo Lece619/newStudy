@@ -71,7 +71,7 @@ public class Num10866 {
                     break;
             }
         }
-//        System.out.println(bw);
+        System.out.println(bw);
 //        deque.check();
 //        bw.flush();
 //        bw.close();
