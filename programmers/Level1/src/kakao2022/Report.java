@@ -1,10 +1,13 @@
 package kakao2022;
 
+import dev_matching2021.*;
+
 import java.util.Arrays;
 import java.util.HashSet;
 
 //https://programmers.co.kr/learn/courses/30/lessons/92334
 public class Report {
+
 
     public static void main(String[] args) {
         String[] id_list ={"con", "ryan" };
@@ -12,7 +15,7 @@ public class Report {
         int k = 2;
         int[] result = new Solution().solution(id_list,report,k);
         for (int i : result) {
-            System.out.print(i+" ");
+            System.out.print(i + " ");
         }
     }
 }

@@ -8,7 +8,7 @@ public class MainFrameTest extends JFrame {
     Dimension monitorSize = Toolkit.getDefaultToolkit().getScreenSize();
     int monitorX = monitorSize.width;
     int monitorY = monitorSize.height;
-    Image background = Toolkit.getDefaultToolkit().getImage("D:\\git\\newStudy\\selfProject\\starbucks\\src\\Img\\backgroundImg.jpg");
+    Image background = Toolkit.getDefaultToolkit().getImage("selfProject\\starbucks\\src\\Img\\backgroundImg.jpg");
 
     public MainFrameTest() {
 

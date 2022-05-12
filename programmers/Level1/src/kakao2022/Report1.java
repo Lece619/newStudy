@@ -1,5 +1,7 @@
 package kakao2022;
 
+import dev_matching2021.Lotto;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -14,11 +16,13 @@ public class Report1 {
         for (int i : result) {
             System.out.print(i+" ");
         }
+        System.out.println();
     }
 
 }
 class Solution1 {
     public int[] solution(String[] id_list, String[] report, int k) {
+
         HashSet<String> set = new HashSet<>(Arrays.asList(report));
         int[] isReported= new int[id_list.length];
         int[] answer = new int[id_list.length];

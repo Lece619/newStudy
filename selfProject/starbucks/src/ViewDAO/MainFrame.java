@@ -5,10 +5,15 @@ import java.awt.*;
 
 public class MainFrame extends JFrame {
     //Image image = new ImageIcon(MainFrame.class.getResource("D:\\git\\newStudy\\selfProject\\starbucks\\src\\Img\\backgroundImg.jpg")).getImage();
-    Image background = Toolkit.getDefaultToolkit().getImage("D:\\git\\newStudy\\selfProject\\starbucks\\src\\Img\\backgroundImg.jpg");
+    Dimension monitorSize = Toolkit.getDefaultToolkit().getScreenSize();
+    int monitorX = monitorSize.width;
+    int monitorY = monitorSize.height;
+    Image background = Toolkit.getDefaultToolkit().getImage("selfProject\\starbucks\\src\\Img\\backgroundImg.jpg");
+
 
     public void startFrame() {
-        setBounds(300, 100, 700, 400);
+        background=background.getScaledInstance(400,600,Image.SCALE_SMOOTH);
+        setBounds(monitorX-500, monitorY-800, 400, 600);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setBackground(Color.BLACK);
         JLabel backLabel = new JLabel(){
