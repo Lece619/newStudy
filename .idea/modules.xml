@@ -11,6 +11,7 @@
       <module fileurl="file://$PROJECT_DIR$/selfProject/panelTest/panelTest.iml" filepath="$PROJECT_DIR$/selfProject/panelTest/panelTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/programmers/programmers.iml" filepath="$PROJECT_DIR$/programmers/programmers.iml" />
       <module fileurl="file://$PROJECT_DIR$/backjoon/queueQ/queueQ.iml" filepath="$PROJECT_DIR$/backjoon/queueQ/queueQ.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backjoon/recursion/recursion.iml" filepath="$PROJECT_DIR$/backjoon/recursion/recursion.iml" />
       <module fileurl="file://$PROJECT_DIR$/selfProject/selfProject.iml" filepath="$PROJECT_DIR$/selfProject/selfProject.iml" />
       <module fileurl="file://$PROJECT_DIR$/backjoon/stackQ/stackQ.iml" filepath="$PROJECT_DIR$/backjoon/stackQ/stackQ.iml" />
       <module fileurl="file://$PROJECT_DIR$/selfProject/starbucks/starbucks.iml" filepath="$PROJECT_DIR$/selfProject/starbucks/starbucks.iml" />
