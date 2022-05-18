@@ -24,7 +24,7 @@ public class TrinaryReverse {
             }
             return answer;
         }
-        //Integer.parseInt(a,3); String a parseInt by Trinary. 
+        //Integer.parseInt(a,3); String a parseInt by Trinary.
     }
 }
 
