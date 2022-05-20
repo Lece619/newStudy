@@ -22,6 +22,10 @@ public class Num1269 {
         while(st.hasMoreTokens()){
             setB.add(Integer.parseInt(st.nextToken()));
         }
+        n=setA.size();
+        m=setB.size();
+        //System.out.println(n+"   "+m);
+
         for (Integer s : setB) {
             if(setA.contains(s)){
                 n--;
@@ -33,7 +37,8 @@ public class Num1269 {
             }
         }
         //A-B B-A 합집합 - 교집합
-        int result = m+n;
+        //System.out.println(n+"  fd   "+m);
+        String result = (m+n)+"";
         bw.write(result);
         bw.flush();
         br.close();
