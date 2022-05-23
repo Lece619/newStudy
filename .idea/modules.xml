@@ -18,6 +18,7 @@
       <module fileurl="file://$PROJECT_DIR$/backjoon/stackQ/stackQ.iml" filepath="$PROJECT_DIR$/backjoon/stackQ/stackQ.iml" />
       <module fileurl="file://$PROJECT_DIR$/selfProject/starbucks/starbucks.iml" filepath="$PROJECT_DIR$/selfProject/starbucks/starbucks.iml" />
       <module fileurl="file://$PROJECT_DIR$/backjoon/stringBackjoon/stringBackjoon.iml" filepath="$PROJECT_DIR$/backjoon/stringBackjoon/stringBackjoon.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backjoon/sumNum/sumNum.iml" filepath="$PROJECT_DIR$/backjoon/sumNum/sumNum.iml" />
     </modules>
   </component>
 </project>
