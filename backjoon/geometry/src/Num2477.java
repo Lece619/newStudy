@@ -5,26 +5,34 @@ public class Num2477 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        int[] order = {4,3,1,2};
-        int[] wayLen = new int[4];
-        int temp=0;
-        int nextWay=0;
-        int smallBox=0;
-        int[][] oror = {{4,2,3,1},{2,3,1,4},{3,1,4,2},{1,4,2,3}};
-
-        for (int i = 0; i < 6; i++) {
+        int[] arrLine = new int[8];
+        int maxRow = 0;
+        int maxRowIdx = 0;
+        int maxCol = 0;
+        int maxColIdx = 0;
+        for (int i = 1; i <= 6; i++) {
             int way = sc.nextInt();
-            int len = sc.nextInt();
-            wayLen[way-1]=len;
-            if(i==0||way==nextWay) {
-                temp = len;
-            }else if(way!=nextWay){
-                smallBox=temp*len;
+            int line = sc.nextInt();
+            arrLine[i]=line;
+            if(i%2==0){
+                if(maxRow<line){
+                    maxRow=line;
+                    maxRowIdx = i;
+                }
+            }else{
+                if(maxCol<line) {
+                    maxCol=line;
+                    maxColIdx = i;
+                }
             }
-            nextWay = order[way - 1];
         }
-        int big= Math.max(wayLen[0],wayLen[1])*Math.max(wayLen[2],wayLen[3]);
-//        System.out.println(big+"  "+smallBox);
-        System.out.println((big-smallBox)*n);
+        arrLine[0]=arrLine[6];
+        arrLine[7]=arrLine[1];
+        int big = maxCol*maxRow;
+        int small = Math.abs(arrLine[maxRowIdx-1]-arrLine[maxRowIdx+1])*
+                        Math.abs(arrLine[maxColIdx-1]-arrLine[maxColIdx+1]);
+        System.out.println((big-small)*n);
+
+
     }
 }
