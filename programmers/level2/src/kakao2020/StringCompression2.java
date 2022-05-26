@@ -2,6 +2,7 @@ package kakao2020;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 public class StringCompression2 {
     public int solution(String s) {
@@ -22,11 +23,29 @@ public class StringCompression2 {
 
                 if (i + k > s.length()) {
                     System.out.println(s.substring(i));
+                    queue.add(s.substring(i));
                 } else {
                     System.out.println(s.substring(i, i + k));
+                    queue.add(s.substring(i, i + k));
                 }
             }
+            String temp = "";
+            String now = queue.poll();
+            int cnt = 0;
+            while(!queue.isEmpty()){
+                if(now.equals(queue.peek())){
+                    queue.poll();
+                    cnt++;
+                }else{
+                    if(cnt!=0){
+                        temp=cnt+now+temp;
+                    }
+                    cnt=0;
+                    now = queue.poll();
+                }
 
+            }
+            System.out.println("temp : "+temp);
         }
 
         return answer;
