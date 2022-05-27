@@ -1,13 +1,17 @@
 package kakao2017;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 
 //https://programmers.co.kr/learn/courses/30/lessons/1835  단체사진 찍기
 public class GroupPhoto {
 
+    public String[] m = {"A","C","F","J","M","N","R","T"};
+
+    static ArrayList<String> list = new ArrayList<>();
+    static ArrayList<String> totalList =new ArrayList<>();
     public int solution(int n, String[] data) {
         //{A, C, F, J, M, N, R, T}
-        char[] m = {'A','C','F','J','M','N','R','T'};
         int answer = 0;
 
         for (int i = 0; i < 7; i++) {
@@ -17,17 +21,27 @@ public class GroupPhoto {
         }
         return answer;
     }
+    public  void makeSet(){
+        if(list.size()==m.length){
+            System.out.println(list.toString().replaceAll("[\\[\\], ]",""));
+            totalList.add(list.toString().replaceAll("[\\[\\], ]",""));
+            System.out.println(list);
+        }else{
+            for (int i = 0; i < m.length; i++) {
+                if(!list.contains(m[i])){
+                    list.add(m[i]);
+                    makeSet();
+                    list.remove(m[i]);
+                }
+            }
+        }
+    }
+
 
     public static void main(String[] args) {
-        HashSet<String> strSet = new HashSet<>();
-        strSet.add(String.valueOf(new char[]{'1','2'}));
-        strSet.add(String.valueOf(new char[]{'1','2'}));
-        strSet.add(String.valueOf(new char[]{'1','2'}));
-        strSet.add(String.valueOf(new char[]{'1','2'}));
-        strSet.add(new char[]{'1','2'}.toString());
-        strSet.add(new char[]{'1','2'}.toString());
-        char[] a= {'1','2'};
-        System.out.println(strSet);
+        new GroupPhoto().makeSet();
+        System.out.println(totalList);
+        System.out.println(totalList.size());
     }
 
 }
