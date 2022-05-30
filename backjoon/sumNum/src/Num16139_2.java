@@ -13,24 +13,26 @@ public class Num16139_2 {
         String str = br.readLine();
         int q = Integer.parseInt(br.readLine());
         StringBuilder sb = new StringBuilder();
-        int[][] strArr = new int[str.length()][str.length()];
-        strArr[0][0]=1;
+        int[][] strArr = new int['z'-'a'+1][str.length()];
+        strArr[str.charAt(0)-'a'][0]=1;
         for (int i = 1; i < str.length(); i++) {
-            for (int[] ints : strArr) {
-                ints[i]+=ints[i-1];
+            int idx = str.charAt(i)-'a';
+            for (int j = 0; j < strArr.length; j++) {
+                strArr[j][i]+=strArr[j][i-1];
             }
-            int a = str.indexOf(str.charAt(i));
-            strArr[a][i]++;
+            strArr[idx][i]++;
         }
 
         for (int i = 0; i < q; i++) {
             StringTokenizer st = new StringTokenizer(br.readLine());
-            String c = st.nextToken();
+            char c = st.nextToken().charAt(0);
             int start = Integer.parseInt(st.nextToken());
             int end = Integer.parseInt(st.nextToken());
-            start = start == 0 ? 0 : strArr[str.indexOf(c)][start-1];
-            end = end == 0 ? 0 : strArr[str.indexOf(c)][end];
-            sb.append((end-start)+"\n");
+            if(start==0){
+                sb.append(strArr[c-'a'][end]).append("\n");
+            }else{
+                sb.append(strArr[c-'a'][end]-strArr[c-'a'][start-1]).append("\n");
+            }
         }
         System.out.println(sb.toString());
     }
