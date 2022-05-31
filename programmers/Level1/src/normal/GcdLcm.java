@@ -3,14 +3,14 @@ package normal;
 public class GcdLcm {
     public int[] solution(int n, int m) {
 
-        int[] answer ={gbc(n,m),n*m/gbc(n,m)};
+        int[] answer ={gcd(n,m),n*m/gcd(n,m)};
         return answer;
     }
-    public int gbc(int a, int b){
+    public int gcd(int a, int b){
         if(b==0){
             return a;
         }
-        return gbc(b,a%b);
+        return gcd(b,a%b);
     }
 
     public static void main(String[] args) {
