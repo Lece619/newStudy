@@ -1,4 +1,4 @@
-package seasonCoding;
+package seasoncoding;
 
 public class makePrimary {
     class Solution {

@@ -1,4 +1,4 @@
-package seasonCoding;
+package seasoncoding;
 
 import java.util.Arrays;
 
