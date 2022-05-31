@@ -6,17 +6,17 @@ package tipstown2017;
 import java.util.HashSet;
 import java.util.stream.IntStream;
 
+//괄호문제랑 같지않나?
 public class RemoveCouple {
-    public int solution(String s)
-    {
+    public int solution(String s) {
         int answer = -1;
-        HashSet<String> set = new HashSet<>();
-        IntStream.range(0,s.length()).forEach(i->set.add(s.charAt(i)+""));
-        System.out.println(set);
+
         return answer;
+
     }
 
+
+
     public static void main(String[] args) {
-        new RemoveCouple().solution("asdfafas");
     }
 }
