@@ -3,15 +3,26 @@
 
 package tipstown2017;
 
-import java.util.HashSet;
-import java.util.stream.IntStream;
+import java.util.Stack;
 
 //괄호문제랑 같지않나?
 public class RemoveCouple {
     public int solution(String s) {
-        int answer = -1;
+        Stack<Character> stack = new Stack<>();
+        for (int i = 0; i < s.length(); i++) {
+            Character c = s.charAt(i);
+            if(stack.isEmpty()){
+                stack.push(c);
+            }else{
+                if(stack.peek()==c){
+                    stack.pop();
+                }else{
+                    stack.push(c);
+                }
+            }
+        }
 
-        return answer;
+        return stack.isEmpty() ? 1 : 0;
 
     }
 
