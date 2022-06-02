@@ -57,7 +57,7 @@ public class MenuRenewer {
     public static void main(String[] args) {
         MenuRenewer m = new MenuRenewer();
         m.makeSet("ABE",0,3,"");
-        m.solution(null,null);
+       // m.solution(null,null);
 
     }
 
