@@ -1,8 +1,16 @@
 import java.util.*;
+import java.util.regex.Pattern;
 
 public class Test {
     public static void main(String[] args) {
-        String a = "abc";
-        System.out.println(a.substring(3));
+        ArrayList<String> arrayList = new ArrayList<>();
+        arrayList.add("2");
+        arrayList.add("2");
+        arrayList.add("2");
+        arrayList.add("2");
+        arrayList.add("2");
+        System.out.println(arrayList);
+        arrayList.remove("3");
+        System.out.println(arrayList);
     }
 }
