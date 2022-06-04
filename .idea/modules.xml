@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/backjoon/backjoon.iml" filepath="$PROJECT_DIR$/backjoon/backjoon.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backjoon/binarysearch/binarysearch.iml" filepath="$PROJECT_DIR$/backjoon/binarysearch/binarysearch.iml" />
       <module fileurl="file://$PROJECT_DIR$/selfProject/cafe/cafe.iml" filepath="$PROJECT_DIR$/selfProject/cafe/cafe.iml" />
       <module fileurl="file://$PROJECT_DIR$/selfProject/calendarPlaner/calendarPlaner.iml" filepath="$PROJECT_DIR$/selfProject/calendarPlaner/calendarPlaner.iml" />
       <module fileurl="file://$PROJECT_DIR$/backjoon/divide_conquer/divide_conquer.iml" filepath="$PROJECT_DIR$/backjoon/divide_conquer/divide_conquer.iml" />
