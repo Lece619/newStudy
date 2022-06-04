@@ -2,45 +2,58 @@
 //코딩테스트 연습 - 정렬 가장 큰 수
 package normal;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Comparator;
 
 public class BiggerNum {
-        boolean[] check;
-        int[] number;
-        long max;
-        StringBuilder sb;
 
         public String solution(int[] numbers) {
-                check=new boolean[numbers.length];
-                sb = new StringBuilder();
-                max = 0;
-                number=numbers;
-                makeList(0,numbers.length);
-                System.out.println(max);
-                return max+"";
-        }
-        public void makeList(int n,int length){
-                if(n==length){
-                        if(max < Long.parseLong(sb.toString())){
-                                max=Long.parseLong(sb.toString());
-                        }
-                }else{
-                        for (int i = 0; i < length; i++) {
-                                if(!check[i]){
-                                    check[i]=true;
-                                    StringBuilder sbTemp = new StringBuilder(sb);
-                                    sb.append(number[i]);
-                                    makeList(n+1,length);
-                                    sb=sbTemp;
-                                    check[i]=false;
-                                }
-                        }
+                StringBuilder sb = new StringBuilder();
+                String[] number = new String[numbers.length];
+                for (int i = 0; i < number.length; i++) {
+                        number[i]= numbers[i]+"";
                 }
+                Arrays.sort(number, new Comparator<String>() {
+                        @Override
+                        public int compare(String o1, String o2) {
+
+                                return (o2+o1).compareTo(o1+o2);
+                        }
+                });
+                if(number[0].equals("0")){
+                        return "0";
+                }
+                String answer = "";
+                for (String s : number) {
+                        answer+=s;
+                }
+                System.out.println(answer);
+                return answer;
         }
 
+
         public static void main(String[] args) {
-                int[] number = {3, 30, 34, 5, 9};
+                int[] number = {102, 10, 101, 10, 1, 99, 9, 999};
+                //99999911021011010
+                //99999911021010101
                 boolean[] num = new boolean[100_000];
+                /*Arrays.sort(number, new Comparator<Integer>() {
+                        @Override
+                        public int compare(Integer o1, Integer o2) {
+                                int num1 = upNum(o1);
+                                int num2 = upNum(o2);
+                                System.out.println(o1+"  "+o2);
+                                System.out.println(num1+"  "+num2);
+                                return num2-num1;
+                        }
+                        987654321101000
+                        987654321101000
+                });*/
+                //  13  131
+                //   51  555  512
+                //  62  66  67
+                //  626 627
+                //1000=>10000
 
                new BiggerNum().solution(number);
         }
