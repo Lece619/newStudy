@@ -40,7 +40,6 @@ public class Num11401 {
             powNum /= 2;
         }
 
-        return result;  
+        return result;
     }
-
 }
