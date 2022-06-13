@@ -9,6 +9,7 @@ public class MaxExpression {
         String[] nums = expression.split("[-+*]");
         String express = expression.replaceAll("\\d","");
         long answer = 0;
+
         System.out.println(express);
         for (String num : nums) {
             System.out.print("  " + num);
