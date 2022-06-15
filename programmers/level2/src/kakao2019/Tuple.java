@@ -4,8 +4,7 @@
 //        튜플
 package kakao2019;
 
-import java.util.Arrays;
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Tuple {
@@ -13,22 +12,37 @@ public class Tuple {
         s = s.replaceAll("^[{]|[}]$","");
         s = s.replaceAll("^[{]|[}]$","");
         String[] sArr = s.split("[}]+[,]+[{]");
-        HashMap<Integer,String> map = new HashMap<>();
+        HashMap<Integer,String[]> map = new HashMap<>();
         for (int i = 0; i < sArr.length; i++) {
-            map.put(sArr[i].length(),sArr[i]);
+            //4,2,3 = > [4,2,3] 형태로
+            String[] StringArr = sArr[i].split(",");
+            map.put(StringArr.length,StringArr);
         }
-        System.out.println(map);
-        return null;
+        ArrayList<String> ans = new ArrayList<>();
+        for (int i = 1; i <= map.size(); i++) {
+            System.out.println();
+            System.out.println(map.get(i).length);
+            for (String s1 : map.get(i)) {
+                if(!ans.contains(s1)){
+                    ans.add(s1);
+                }
+            }
+        }
+        int[] answer = ans.stream().mapToInt(Integer::parseInt).toArray();
+
+        return answer;
     }
 
     public static void main(String[] args) {
         String sample = "{{4,2,3},{3},{2,3,4,1},{2,3}}";
 
-        sample = sample.replaceAll("^[{]|[}]$","");
-        sample = sample.replaceAll("^[{]|[}]$","");
        // sample = sample.replaceAll("[}]+[,]+[{]"," ");
         //String[] sArr = sample.split("[}]+[,]+[{]");
         System.out.println(sample);
-        new Tuple().solution(sample);
+        String[] arr = sample.replaceAll("[{]", " ").replaceAll("[}]", " ").trim().split(" , ");
+        for (String s : arr) {
+            System.out.println(s);
+        }
+       // new Tuple().solution(sample);
     }
 }
