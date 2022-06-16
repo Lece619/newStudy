@@ -1,5 +1,7 @@
 package maester;
 
+import java.util.ArrayList;
+
 public class GameMap {
 
     static int min = -1;
@@ -12,37 +14,61 @@ public class GameMap {
         n = maps.length;
         m = maps[0].length;
         check = new boolean[n][m];
+        ArrayList<int[]> list = new ArrayList<>();
+        boolean endCheck = false;
+        list.add(new int[]{0,0});
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
-                if (maps[i][j] == 1) {
+                if(maps[i][j]==1){
                     check[i][j] = true;
                 }
             }
         }
+        check[0][0]=false;
+        int step = 1;
 
-        int answer = 0;
-        return answer;
-    }
 
-    public void move(int x, int y, int len) {
-        len++;
-        for (int i = 0; i < moveX.length; i++) {
-            int newX = x + moveX[i];
-            int newY = y + moveY[i];
-
+        while(!endCheck){
+            step++;
+            endCheck = true;
+            ArrayList<int[]> temp = new ArrayList<>();
+            //하나라도 이동 가능하다면
+            for (int[] ints : list) {
+                for (int i = 0; i < 4; i++) {
+                    int x = ints[0] + moveX[i];
+                    int y = ints[1] + moveY[i];
+                    if(moveOk(x,y)){
+                        check[x][y]=false;
+                        temp.add(new int[]{x,y});
+                        endCheck = false;
+                        if(x==n-1&&y==m-1){
+                            return step;
+                        }
+                    }
+                }
+            }
+            list = temp;
         }
-    }
+        int answer = 0;
+        if(endCheck){
+            answer = step;
+        }else{
+            answer = -1;
+        }
 
-    //이동이 가능한지 판단
-    public boolean isMoveOk(int x, int y) {
-        if (x < 0 || x >= n || y < 0 || y >= m) {
+        return -1;
+    }
+    public boolean moveOk(int x, int y){
+        if(x < 0 || x >= n || y < 0 || y >= m ){
             return false;
         }
         return check[x][y];
     }
 
+
     public static void main(String[] args) {
-        int[][] maps = {{1, 0, 1, 1, 1}, {1, 0, 1, 0, 1}, {1, 0, 1, 1, 1}, {1, 1, 1, 0, 1}, {0, 0, 0, 0, 1}};
-        new GameMap().solution(maps);
+        //int[][] maps = {{1, 0, 1, 1, 1}, {1, 0, 1, 0, 1}, {1, 0, 1, 1, 1}, {1, 1, 1, 0, 1}, {0, 0, 0, 0, 1}};
+        int[][] maps = {{1,0,1,1,1}, {1,0,1,0,1}, {1,0,1,1,1}, {1,1,1,0,0}, {0,0,0,0,1}};
+        System.out.println(new GameMap().solution(maps));
     }
 }
