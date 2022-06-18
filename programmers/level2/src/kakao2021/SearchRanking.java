@@ -24,34 +24,56 @@ public class SearchRanking {
                     for (int l = 0; l < food.length; l++) {
                         applicant.put(language[i] + " " +
                                 position[j] + " " +
-                                level[k] + " " + food[l], new ArrayList<>());
+                                level[k] + " " +
+                                food[l]  + " -", new ArrayList<>());
                     }
                 }
             }
         }
         //지원자 정보 삽입
         makeMap(info);
+        for (String s : applicant.keySet()) {
+            Collections.sort(applicant.get(s));
+        }
+
         ArrayList<Integer> answerList = new ArrayList<>();
         for (String s : query) {
             String[] queryArr = s.replaceAll("[ ]+[a]+[n]+[d]","").split(" ");
-            ArrayList<String> keys = makeKey(queryArr[0], queryArr[1], queryArr[2], queryArr[3]);
-            int score = Integer.parseInt(queryArr[4]);
             int count = 0;
-            for (String key : keys) {
-                //count += applicant.get(key).stream().filter(i -> i>=score).count();
-                Collections.sort(applicant.get(key),Collections.reverseOrder());
-                for (int i = 0; i < applicant.get(key).size(); i++) {
-                    if(applicant.get(key).get(i) < score){
+            int score = Integer.parseInt(queryArr[4]);
+
+            for (String s1 : applicant.keySet()) {
+                boolean check = true;
+                for (int i = 0; i <4; i++) {
+                    if(!s1.contains(queryArr[i])){
+                        check = false;
                         break;
                     }
-                    count++;
+                }
+                if(check){
+                    count += countFind(applicant.get(s1),score);
                 }
             }
-            answerList.add(count);
         }
         System.out.println(answerList);
         Integer[] answer = answerList.toArray(new Integer[0]);
         return answer;
+    }
+
+    public static int countFind(ArrayList<Integer> arr,int score){
+        int count = arr.size();
+        int min = 0;
+        int max = count;
+        while( min < max ){
+            int mid = (max + min) / 2 ;
+            if (arr.get(mid) >= score){
+                max = mid;
+            }else{
+                min = mid + 1;
+            }
+        }
+        count -= min ;
+    return count;
     }
     
     //map에 넣어주기
@@ -59,7 +81,7 @@ public class SearchRanking {
         for (String s : info) {
             String[] arrString = s.split(" ");
             applicant.get(arrString[0] + " " + arrString[1] + " " +
-                    arrString[2] + " " + arrString[3]).add(Integer.parseInt(arrString[4]));
+                    arrString[2] + " " + arrString[3] + " -").add(Integer.parseInt(arrString[4]));
         }
     }
 
