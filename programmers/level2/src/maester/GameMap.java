@@ -1,3 +1,5 @@
+//https://programmers.co.kr/learn/courses/30/lessons/1844
+//코딩테스트 연습 - 찾아라 프로그래밍 마에스터 - 게임 맵 최단거리
 package maester;
 
 import java.util.ArrayList;
@@ -67,6 +69,7 @@ public class GameMap {
 
 
     public static void main(String[] args) {
+        //테스트
         //int[][] maps = {{1, 0, 1, 1, 1}, {1, 0, 1, 0, 1}, {1, 0, 1, 1, 1}, {1, 1, 1, 0, 1}, {0, 0, 0, 0, 1}};
         int[][] maps = {{1,0,1,1,1}, {1,0,1,0,1}, {1,0,1,1,1}, {1,1,1,0,0}, {0,0,0,0,1}};
         System.out.println(new GameMap().solution(maps));
