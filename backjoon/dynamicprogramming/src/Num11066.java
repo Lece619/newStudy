@@ -1,5 +1,3 @@
-import com.sun.org.apache.xpath.internal.operations.String;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -17,13 +15,23 @@ public class Num11066 {
             int K = Integer.parseInt(br.readLine());
             st = new StringTokenizer(br.readLine());
             long[] file = new long[K];
-            for (int i = 0; i < K; i++) {
+            long[] min = new long[K];
+            long sum = 0;
+            for (int i = 0; i < 2; i++) {
                 file[i] = Long.parseLong(st.nextToken());
+                sum += file[i];
+                min[i] = sum;
+            }
+            for (int i = 2; i < K; i++) {
+                file[i] = Long.parseLong(st.nextToken());
+                sum += file[i];
+                min[i] = Math.min(min[i-1] + sum, min[i-2] + file[i] + file[i-1] + sum);
+            }
+            for (long l : min) {
+                System.out.println(l);
             }
 
-
-
-
+            System.out.println(min[K-1]);
         }
     }
 }
