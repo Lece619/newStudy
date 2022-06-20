@@ -14,24 +14,29 @@ public class Num11066 {
         for (int Test = 0; Test < T; Test++) {
             int K = Integer.parseInt(br.readLine());
             st = new StringTokenizer(br.readLine());
-            long[] file = new long[K];
-            long[] min = new long[K];
-            long sum = 0;
-            for (int i = 0; i < 2; i++) {
-                file[i] = Long.parseLong(st.nextToken());
-                sum += file[i];
-                min[i] = sum;
-            }
-            for (int i = 2; i < K; i++) {
-                file[i] = Long.parseLong(st.nextToken());
-                sum += file[i];
-                min[i] = Math.min(min[i-1] + sum, min[i-2] + file[i] + file[i-1] + sum);
-            }
-            for (long l : min) {
-                System.out.println(l);
-            }
+            long[] file = new long[K+1];
+            long[] sum = new long[K+1];
+            long[][] dp = new long[K+2][K+2];
+            long sumTotal = 0;
 
-            System.out.println(min[K-1]);
+            for (int i = 1; i <= K; i++) {
+                file[i] = Long.parseLong(st.nextToken());
+                sum[i] = sum[i-1] + file[i];
+            }
+            //뒤에 범위 = i
+            for (int i = 2; i <= K; i++) {
+                //처음수 = j
+                for (int j = i-1; j > 0; j--) {
+                    dp[j][i] = Integer.MAX_VALUE;
+                    //분할 범위 k
+                    for (int k = j; k <= i; k++) {
+                        dp[j][i] = Math.min(dp[j][i], dp[j][k] + dp[k+1][i]);
+                    }
+                    //sum[i] - sum[j-1] 를 해줘야 최소에 전체값더한것이 최소값이된다.
+                    dp[j][i] += sum[i] - sum[j-1];
+                }
+            }
+            System.out.println(dp[1][K]);
         }
     }
 }
