@@ -6,4 +6,5 @@
 package kakao2019;
 
 public class CandidateKey {
+    //후보키에대한 문제풀이
 }
