@@ -23,7 +23,7 @@ public class CandidateKey {
         System.out.println(keySet);
         return answer;
     }
-
+    //우선 후보키를 만들고 이름길이에 따라 정렬후 진행 - 할것인가.
     public void makeKeySet(int a){
         System.out.println(makeKey2.toString());
         for (int i = a; i < columnSize; i++) {
