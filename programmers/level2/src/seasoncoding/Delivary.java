@@ -30,19 +30,15 @@ public class Delivary {
                 }
                 if(target != 0) {
                     town[target] = Math.min(town[target], (ints[2] + town[start]));
-                    if(town[target] < nextMin && check[target] == false){
-                        nextStart = target;
-                    }
                 }
             }
-            if(nextStart==0){
-                int nextMin = Integer.MAX_VALUE;
-                for (int j = 0; j < check.length; j++) {
-                    if(!check[j]){
-                        if(town[j]<nextMin){
-                            nextMin = town[j];
-                            nextStart = j;
-                        }
+
+            int nextMin = Integer.MAX_VALUE;
+            for (int j = 0; j < check.length; j++) {
+                if(!check[j]){
+                    if(town[j]<nextMin){
+                        nextMin = town[j];
+                        nextStart = j;
                     }
                 }
             }
@@ -55,10 +51,10 @@ public class Delivary {
                 answer++;
             }
         }
-
-        System.out.println("answer = " + answer);
         return answer;
     }
+
+
 
     public static void main(String[] args) {
         int[][] road = {{1, 2, 1}, {1, 3, 2}, {2, 3, 2}, {3, 4, 3}, {3, 5, 2}, {3, 5, 3}, {5, 6, 1}};
