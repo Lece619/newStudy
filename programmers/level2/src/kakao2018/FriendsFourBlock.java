@@ -15,6 +15,7 @@ public class FriendsFourBlock {
     boolean flag;
 
     public int solution(int m, int n, String[] board) {
+        int answer = 0;
         blocks = new ArrayList[board[0].length()];
         check = new boolean[board[0].length()][board.length];
         // 초기화
@@ -31,6 +32,8 @@ public class FriendsFourBlock {
 
         flag = true;
         while(flag){
+            //1 로테이션
+            flag = false;
             for (int i = 0; i < blocks.length-1; i++) {
                 for (int j = 0; j < blocks[0].size()-1; j++) {
                     if(blocks[i].get(j)=='0'){
@@ -39,28 +42,65 @@ public class FriendsFourBlock {
                     checkBlock(i, j);
                 }
             }
+
+            for (int i = 0; i < blocks.length; i++) {
+                for (int j = 0; j < blocks[0].size(); j++) {
+                    if(blocks[i].get(j)=='0'){
+                        break;
+                    }
+                    if(check[i][j]){
+                        check[i][j] = false;
+                        blocks[i].set(j, '1');
+                        blocks[i].add('0');
+                        answer++;
+                    }
+                }
+                while(blocks[i].contains('1')){
+                    Character a = '1';
+                    blocks[i].remove(a);
+                }
+            }
+            System.out.println("blocks = " + blocks[0]);
+            System.out.println("blocks = " + blocks[1]);
+            System.out.println("blocks = " + blocks[2]);
+            System.out.println("blocks = " + blocks[3]);
+            System.out.println("blocks = " + blocks[4]);
+            System.out.println("blocks = " + blocks[5]);
+            System.out.println(
+                    "\n"
+            );
         }
 
-/*        System.out.println("blocks = " + blocks[0]);
+        System.out.println("blocks = " + blocks[0]);
         System.out.println("blocks = " + blocks[1]);
         System.out.println("blocks = " + blocks[2]);
         System.out.println("blocks = " + blocks[3]);
-        System.out.println("blocks = " + blocks[4]);*/
+        System.out.println("blocks = " + blocks[4]);
+        System.out.println("blocks = " + blocks[5]);
 
 
-        int answer = 0;
+        System.out.println("answer = " + answer);
         return answer;
     }
 
     public void checkBlock(int x, int y){
-
+        Character c = blocks[x].get(y);
+        boolean same = c == blocks[x].get(y+1) && c == blocks[x+1].get(y) && c == blocks[x+1].get(y+1);
+        if(same){
+            check[x][y] = true;
+            check[x+1][y] = true;
+            check[x+1][y+1] = true;
+            check[x][y+1] = true;
+            flag = same;
+        }
     }
 
     public static void main(String[] args) {
         FriendsFourBlock test = new FriendsFourBlock();
-        int m = 4;
-        int n = 5;
-        String[] board = {"CCBDE", "AAADE", "AAABF", "CCBBF"};
+        int m = 6;
+        int n = 6;
+
+        String[] board = {"TTTANT", "RRFACC", "RRRFCC", "TRRRAA", "TTMMMF", "TMMTTJ"};
         test.solution(m, n, board);
 
     }
