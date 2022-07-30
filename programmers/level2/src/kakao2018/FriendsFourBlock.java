@@ -7,7 +7,6 @@ https://school.programmers.co.kr/learn/courses/30/lessons/17679
 package kakao2018;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class FriendsFourBlock {
     ArrayList<Character>[] blocks;
@@ -60,23 +59,10 @@ public class FriendsFourBlock {
                     blocks[i].remove(a);
                 }
             }
-            System.out.println("blocks = " + blocks[0]);
-            System.out.println("blocks = " + blocks[1]);
-            System.out.println("blocks = " + blocks[2]);
-            System.out.println("blocks = " + blocks[3]);
-            System.out.println("blocks = " + blocks[4]);
-            System.out.println("blocks = " + blocks[5]);
-            System.out.println(
-                    "\n"
+            
             );
         }
 
-        System.out.println("blocks = " + blocks[0]);
-        System.out.println("blocks = " + blocks[1]);
-        System.out.println("blocks = " + blocks[2]);
-        System.out.println("blocks = " + blocks[3]);
-        System.out.println("blocks = " + blocks[4]);
-        System.out.println("blocks = " + blocks[5]);
 
 
         System.out.println("answer = " + answer);
