@@ -15,7 +15,11 @@ public class DifferentBit {
         long[] answer = new long[numbers.length];
 
         for (int i = 0; i < numbers.length; i++) {
-            answer[i] = makeDifferent(numbers[i]);
+            if(numbers[i] %2 ==0 ){
+                answer[i] = numbers[i]+1;
+            }else {
+                answer[i] = makeDifferent(numbers[i]);
+            }
         }
 
         return answer;
@@ -33,16 +37,23 @@ public class DifferentBit {
 
     boolean checkDifferentNum(long num1, long num2){
         String xor = Long.toBinaryString(num1 ^ num2);
-        int count = xor.replace("0", "").length();
-        return count > 2;
+        int count = 0 ;
+        for (int i = 0; i < xor.length(); i++) {
+            if(xor.charAt(i) == '1'){
+                count ++ ;
+                if(count>2){
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
 
     public static void main(String[] args) {
-       //new DifferentBit().solution(new long[]{2L,7L});
-        long num1 = 7L;
-        long num2 = 11L;
-        System.out.println(Long.toBinaryString(num1 ^ num2));
+        long[] solution = new DifferentBit().solution(new long[]{2L, 7L});
+        System.out.println("solution[0] = " + solution[0]);
+        System.out.println("solution[1] = " + solution[1]);
     }
 
 }
