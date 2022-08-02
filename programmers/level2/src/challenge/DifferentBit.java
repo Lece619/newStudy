@@ -9,8 +9,6 @@ package challenge;
 
 public class DifferentBit {
 
-
-
     public long[] solution(long[] numbers) {
         long[] answer = new long[numbers.length];
 
@@ -18,35 +16,23 @@ public class DifferentBit {
             if(numbers[i] %2 ==0 ){
                 answer[i] = numbers[i]+1;
             }else {
-                answer[i] = makeDifferent(numbers[i]);
+                answer[i] = nextDifferent(numbers[i]);
             }
         }
 
         return answer;
     }
 
-    public long makeDifferent(long num1){
-        boolean check = true;
-        long num2 = num1;
-        while(check){
-            num2++;
-            check = checkDifferentNum(num1, num2);
+    public long nextDifferent(long num){
+        String binNum = Long.toBinaryString(num);
+        StringBuilder sb = new StringBuilder().append(binNum).reverse();
+        int firstNum = sb.indexOf("0");
+        if(firstNum == -1){
+          firstNum = binNum.length();
         }
-        return num2;
-    }
+        double sum = Math.pow(2,firstNum-1);
 
-    boolean checkDifferentNum(long num1, long num2){
-        String xor = Long.toBinaryString(num1 ^ num2);
-        int count = 0 ;
-        for (int i = 0; i < xor.length(); i++) {
-            if(xor.charAt(i) == '1'){
-                count ++ ;
-                if(count>2){
-                    return true;
-                }
-            }
-        }
-        return false;
+        return num + (long)sum;
     }
 
 
@@ -54,6 +40,9 @@ public class DifferentBit {
         long[] solution = new DifferentBit().solution(new long[]{2L, 7L});
         System.out.println("solution[0] = " + solution[0]);
         System.out.println("solution[1] = " + solution[1]);
+
+        System.out.println(new DifferentBit().nextDifferent(7L));
+        System.out.println(new DifferentBit().nextDifferent(7L));
     }
 
 }
