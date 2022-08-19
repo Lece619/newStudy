@@ -21,7 +21,6 @@ public class GroupPhoto {
         m = new String[]{"A", "C", "F", "J", "M", "N", "R", "T"};
         visit = new boolean[8];
         totalSize=makeSet(data);
-        //System.out.println(totalList);
         return totalList.size();
     }
     public int makeSet(String[] data){
