@@ -23,13 +23,17 @@ public class makePrimary {
             return answer;
         }
 
-        public static boolean check(int total) {
+        public boolean check(int total) {
             for (int i = 2; i < total; i++) {
                 if (total % i == 0)
                     return false;
             }
             return true;
         }
+    }
+
+    public static void main(String[] args) {
+
     }
 }
 
