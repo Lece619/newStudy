@@ -7,6 +7,7 @@ https://school.programmers.co.kr/learn/courses/30/lessons/92342
 package kakao2022;
 
 
+
 import java.util.HashSet;
 
 public class ArcheryCompetition {
@@ -17,6 +18,8 @@ public class ArcheryCompetition {
 
         makeRyanScore(0, n, 5);
         return null;
+
+
     }
 
     private void makeRyanScore(int num, int n, int limit) {
