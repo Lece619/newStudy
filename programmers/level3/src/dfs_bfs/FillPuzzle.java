@@ -32,13 +32,41 @@ public class FillPuzzle {
                 }
             }
         }
+        //회전 테이블
+        int[][] blockTable2 = makeRotation(blockTable);
+        int[][] blockTable3 = makeRotation(blockTable2);
+        int[][] blockTable4 = makeRotation(blockTable3);
+
+        for (int i = 0; i < game_board.length; i++) {
+            for (int j = 0; j < game_board[0].length; j++) {
+
+            }
+        }
         for (int[] ints : table) {
             for (int anInt : ints) {
                 System.out.print(" " + anInt);
             }
             System.out.println();
         }
+        System.out.println();
+        for (int[] ints : blockTable2) {
+            for (int anInt : ints) {
+                System.out.print(" " + anInt);
+            }
+            System.out.println();
+        }
+        System.out.println("blockSet = " + blockSet);
         return answer;
+    }
+
+    private int[][] makeRotation(int[][] blockTable) {
+        int[][] result = new int[size][size];
+        for (int i = 0; i < size ; i++) {
+            for (int j = 0; j < size; j++) {
+                result[i][j] = blockTable[size- j - 1][i];
+            }
+        }
+        return result;
     }
 
     private int makeTable(int i, int j) {
@@ -58,6 +86,13 @@ public class FillPuzzle {
             return result + 1;
         }
     }
+
+    /*
+    1 0  0 1
+    0 0  0 0
+
+    * */
+    // 최대 블록 갯수 50 * 50 1250개 4방향 5000번.
 
 
     public static void main(String[] args) {
