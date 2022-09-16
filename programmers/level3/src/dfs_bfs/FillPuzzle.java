@@ -6,11 +6,59 @@ https://school.programmers.co.kr/learn/courses/30/lessons/84021
 
 package dfs_bfs;
 
+
+import java.util.HashSet;
+
 public class FillPuzzle {
+
+    int idx = 2;
+    int[][] blockTable;
+    int size;
+    int[] x = {0,1,0,-1};
+    int[] y = {1,0,-1,0};
+    HashSet<Integer> blockSet = new HashSet<>();
     public int solution(int[][] game_board, int[][] table) {
-        int answer = -1;
+        int answer = 0;
+        size = game_board.length;
+        blockTable = table.clone();
+        int sum = 0;
+        for (int i = 0; i < table.length; i++) {
+            for (int j = 0; j < table[0].length; j++) {
+                sum = makeTable(i,j);
+                if(sum!=0) {
+                    answer += sum;
+                    blockSet.add(idx);
+                    idx++;
+                }
+            }
+        }
+        for (int[] ints : table) {
+            for (int anInt : ints) {
+                System.out.print(" " + anInt);
+            }
+            System.out.println();
+        }
         return answer;
     }
+
+    private int makeTable(int i, int j) {
+        int result = 0;
+        if(blockTable[i][j] != 1){
+            return 0;
+        }else{
+            blockTable[i][j] = idx;
+            for (int k = 0; k < 4; k++) {
+                int changeI = i + x[k];
+                int changeJ = j + y[k];
+                if(changeI >= 0 && changeI < size &&
+                        changeJ >= 0 && changeJ < size){
+                    result += makeTable(changeI, changeJ);
+                }
+            }
+            return result + 1;
+        }
+    }
+
 
     public static void main(String[] args) {
         int[][] game_board = {{1,1,0,0,1,0},{0,0,1,0,1,0},{0,1,1,0,0,1},{1,1,0,1,1,1},{1,0,0,0,1,0},{0,1,1,1,0,0}};
@@ -18,6 +66,7 @@ public class FillPuzzle {
 
         FillPuzzle fillPuzzle = new FillPuzzle();
         int answer = fillPuzzle.solution(game_board, table);
+        System.out.println("answer = " + answer);
 
     }
 }
