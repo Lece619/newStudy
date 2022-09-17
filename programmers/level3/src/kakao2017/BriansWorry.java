@@ -8,11 +8,10 @@ package kakao2017;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 
 public class BriansWorry {
 
-    HashSet<String> adWord = new HashSet<>();
+    ArrayList<Character> keys = new ArrayList<>();
     boolean isInvalid = false;
     HashMap<Character, ArrayList<Integer>> smallWord = new HashMap<>();
     StringBuilder sb = new StringBuilder();
@@ -20,6 +19,8 @@ public class BriansWorry {
     int idx = -1;
     public String solution(String sentence) {
         String answer = "";
+
+        boolean checkRule = true;
 
         for (int i = 0; i < sentence.length(); i++) {
              char key = sentence.charAt(i);
@@ -34,13 +35,16 @@ public class BriansWorry {
 
              if(!smallWord.containsKey(key)){
                  smallWord.put(key,new ArrayList<>());
+                 keys.add(key);
              }
              smallWord.get(key).add(i);
+             checkRule = false;
         }
-
+        if(checkRule){
+            return sentence;
+        }
         makeResult(sentence);
 
-        System.out.println("smallWord = " + smallWord);
 
 
         return isInvalid ? "invalid" : sb.toString().replaceAll("  ", " ").trim();
@@ -51,7 +55,7 @@ public class BriansWorry {
         boolean checkRuleOne = true;
         boolean checkRuleTwo = false;
 
-        for (Character character : smallWord.keySet()) {
+        for (Character character : keys) {
             int now = -1;
             ArrayList<Integer> checkArray = smallWord.get(character);
             for (Integer idx: checkArray) {
@@ -76,6 +80,8 @@ public class BriansWorry {
                 makeWordRuleOne(checkArray, sentence);
             }else if(checkRuleTwo){
                 makeWordRuleTwo(checkArray, sentence);
+                checkRuleOne = true;
+                checkRuleTwo = false;
             }else{
                 isInvalid = true;
                 break;
@@ -110,10 +116,6 @@ public class BriansWorry {
         StringBuilder tempSb = new StringBuilder();
         int start = checkArray.get(0);
         int end = checkArray.get(checkArray.size()-1);
-        System.out.println("BriansWorry.makeWordRuleTwo");
-        System.out.println("idx = " + idx);
-        System.out.println("start = " + start);
-        System.out.println("end = " + end);
         if(start < idx){
             isInvalid = true;
             return;
@@ -124,11 +126,12 @@ public class BriansWorry {
         tempSb.append(" ").append(sentence.substring(start+1, end)).append(" ");
 
         sb.append(tempSb);
+        idx = end;
     }
 
 
     public static void main(String[] args) {
-        String sentence = "HaEaLaLaObWORLDb";
+        String sentence = "bWORLDbHaEaLaLaO";
         BriansWorry briansWorry = new BriansWorry();
         System.out.println("briansWorry.solution(sentence) = " + briansWorry.solution(sentence));
     }
