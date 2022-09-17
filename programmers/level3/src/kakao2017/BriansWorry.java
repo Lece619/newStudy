@@ -6,5 +6,130 @@ https://school.programmers.co.kr/learn/courses/30/lessons/1830
 
 package kakao2017;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+
 public class BriansWorry {
+
+    HashSet<String> adWord = new HashSet<>();
+    boolean isInvalid = false;
+    HashMap<Character, ArrayList<Integer>> smallWord = new HashMap<>();
+    StringBuilder sb = new StringBuilder();
+
+    int idx = -1;
+    public String solution(String sentence) {
+        String answer = "";
+
+        for (int i = 0; i < sentence.length(); i++) {
+             char key = sentence.charAt(i);
+
+             if(key==' '){
+                 return "invalid";
+             }
+
+             if(key<'a'){
+                 continue;
+             }
+
+             if(!smallWord.containsKey(key)){
+                 smallWord.put(key,new ArrayList<>());
+             }
+             smallWord.get(key).add(i);
+        }
+
+        makeResult(sentence);
+
+        System.out.println("smallWord = " + smallWord);
+
+
+        return isInvalid ? "invalid" : sb.toString().replaceAll("  ", " ").trim();
+    }
+
+    private void makeResult(String sentence) {
+
+        boolean checkRuleOne = true;
+        boolean checkRuleTwo = false;
+
+        for (Character character : smallWord.keySet()) {
+            int now = -1;
+            ArrayList<Integer> checkArray = smallWord.get(character);
+            for (Integer idx: checkArray) {
+                if(now == -1){
+                    now = idx - 2;
+                }
+
+                if(now == (idx - 2) ){
+                    now = idx;
+                }else{
+                    checkRuleOne = false;
+                }
+            }
+
+            if(!checkRuleOne){
+                if(checkArray.size()==2){
+                    checkRuleTwo = true;
+                }
+            }
+
+            if(checkRuleOne){
+                makeWordRuleOne(checkArray, sentence);
+            }else if(checkRuleTwo){
+                makeWordRuleTwo(checkArray, sentence);
+            }else{
+                isInvalid = true;
+                break;
+            }
+
+            if(isInvalid){
+                break;
+            }
+        }
+    }
+
+    private void makeWordRuleOne(ArrayList<Integer> checkArray, String sentence) {
+        StringBuilder tempSb = new StringBuilder();
+        int now = 0;
+        int start = checkArray.get(0) - 1;
+        int end = checkArray.get(checkArray.size()-1) + 2;
+
+        if(start <= idx){
+            isInvalid = true;
+            return;
+        }
+        tempSb.append(" ");
+        for (Integer integer : checkArray) {
+            tempSb.append(sentence.charAt(integer - 1));
+        }
+        tempSb.append(sentence.charAt(end - 1)).append(" ");
+        sb.append(tempSb);
+        idx = end - 1;
+    }
+
+    private void makeWordRuleTwo(ArrayList<Integer> checkArray, String sentence) {
+        StringBuilder tempSb = new StringBuilder();
+        int start = checkArray.get(0);
+        int end = checkArray.get(checkArray.size()-1);
+        System.out.println("BriansWorry.makeWordRuleTwo");
+        System.out.println("idx = " + idx);
+        System.out.println("start = " + start);
+        System.out.println("end = " + end);
+        if(start < idx){
+            isInvalid = true;
+            return;
+        }
+        if(start == (idx + 2) ){
+            tempSb.append(" ").append(sentence.charAt(idx+1)).append(" ");
+        }
+        tempSb.append(" ").append(sentence.substring(start+1, end)).append(" ");
+
+        sb.append(tempSb);
+    }
+
+
+    public static void main(String[] args) {
+        String sentence = "HaEaLaLaObWORLDb";
+        BriansWorry briansWorry = new BriansWorry();
+        System.out.println("briansWorry.solution(sentence) = " + briansWorry.solution(sentence));
+    }
 }
