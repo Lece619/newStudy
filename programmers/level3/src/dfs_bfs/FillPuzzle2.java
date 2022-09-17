@@ -15,8 +15,8 @@ public class FillPuzzle2 {
     int idx = 2;
     int[][] blockTable;
     int size;
-    int[] x = {0,1,0,-1};
-    int[] y = {1,0,-1,0};
+    int[] x = {1,0,-1,0};
+    int[] y = {0,-1,0,1};
     int tableNum = 1;
     HashSet<Integer> blockSet = new HashSet<>();
     HashMap<Integer, String> answerMap = new HashMap<>();
@@ -41,61 +41,56 @@ public class FillPuzzle2 {
                 }
             }
         }
-
+        System.out.println("answerMap = " + answerMap);
+        System.out.println("blockSize = " + blockSize);
 
         //회전 테이블
 
         int[][] blockTable1 = table.clone();
-        int[][] blockTable2 = makeRotation(blockTable1);
-        int[][] blockTable3 = makeRotation(blockTable2);
-        int[][] blockTable4 = makeRotation(blockTable3);
-
-        System.out.println("answerMap = " + answerMap);
-
+        printarrays(blockTable1);
         answer = getAnswer(blockTable1, answer);
-        tableNum+=2;
-        System.out.println("answerMap = " + answerMap);
+        tableNum++;
+        int[][] blockTable2 = makeRotation(blockTable1);
         answer = getAnswer(blockTable2, answer);
         tableNum++;
-        System.out.println("answerMap = " + answerMap);
+        int[][] blockTable3 = makeRotation(blockTable2);
         answer = getAnswer(blockTable3, answer);
         tableNum++;
-        System.out.println("answerMap = " + answerMap);
+        int[][] blockTable4 = makeRotation(blockTable3);
         answer = getAnswer(blockTable4, answer);
-        System.out.println("answerMap = " + answerMap);
 
-        System.out.println();
-        for (int[] ints : game_board) {
-            for (int anInt : ints) {
-                System.out.print(" " + anInt);
-            }
-            System.out.println();
-        }
-        System.out.println("blockSet = " + blockSet);
-        for (int[] ints : blockTable3) {
-            for (int anInt : ints) {
-                System.out.print(" " + anInt);
-            }
-            System.out.println();
-        }
-        System.out.println("blockSet = " + blockSet);
-        System.out.println("answerMap = " + answerMap);
+        printarrays(blockTable);
+        printarrays(blockTable2);
+        printarrays(blockTable3);
+        printarrays(blockTable4);
 
         return answer;
+    }
+
+    private void printarrays(int[][] blockTable1) {
+        for (int[] ints : blockTable1) {
+            for (int anInt : ints) {
+                System.out.print( anInt + " ");
+            }
+            System.out.println();
+        }
+        System.out.println();
     }
 
     private int getAnswer(int[][] getTable, int answer) {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 sb = new StringBuilder();
-                hasBlock(i, j, getTable,5, 1);
-                if(!sb.isEmpty()){
+                hasBlock(i, j, getTable,5, tableNum, tableNum+1);
+                if(sb.length()!=0){
+                    System.out.println("sb.toString() = " + sb.toString());
                     for (Integer integer : answerMap.keySet()) {
                         if(answerMap.get(integer).equals(sb.toString())){
                             answerMap.remove(integer);
                             answer += blockSize.get(integer);
+                            hasBlock(i, j, getTable,5, tableNum+1, 0);
                             break;
-                        }
+                         }
                     }
                 }
             }
@@ -103,18 +98,19 @@ public class FillPuzzle2 {
         return answer;
     }
 
-    private void hasBlock(int i, int j, int[][] checkTable, int numIdx, int addNum) {
-        if(checkTable[i][j] != tableNum){
+    private void hasBlock(int i, int j, int[][] checkTable, int numIdx, int targetNum, int changeNum) {
+        if(checkTable[i][j] != targetNum){
             return;
         }else{
-            checkTable[i][j] = tableNum + addNum;
+            checkTable[i][j] = changeNum;
             sb.append(numIdx);
             for (int k = 0; k < 4; k++) {
+                sb.append(0);
                 int changeI = i + x[k];
                 int changeJ = j + y[k];
                 if(changeI >= 0 && changeI < size &&
                         changeJ >= 0 && changeJ < size){
-                    hasBlock(changeI, changeJ, checkTable, k, addNum);
+                    hasBlock(changeI, changeJ, checkTable, k, targetNum, changeNum);
                 }
             }
         }
@@ -128,6 +124,7 @@ public class FillPuzzle2 {
             blockTable[i][j] = idx;
             sb.append(numIdx);
             for (int k = 0; k < 4; k++) {
+                sb.append(0);
                 int changeI = i + x[k];
                 int changeJ = j + y[k];
                 if(changeI >= 0 && changeI < size &&
@@ -158,8 +155,10 @@ public class FillPuzzle2 {
 
 
     public static void main(String[] args) {
-        int[][] game_board = {{1,1,0,0,1,0},{0,0,1,0,1,0},{0,1,1,0,0,1},{1,1,0,1,1,1},{1,0,0,0,1,0},{0,1,1,1,0,0}};
-        int[][] table = {{1,0,0,1,1,0},{1,0,1,0,1,0},{0,1,1,0,1,1},{0,0,1,0,0,0},{1,1,0,1,1,0},{0,1,0,0,0,0}};
+//        int[][] game_board = {{1,1,0,0,1,0},{0,0,1,0,1,0},{0,1,1,0,0,1},{1,1,0,1,1,1},{1,0,0,0,1,0},{0,1,1,1,0,0}};
+//        int[][] table = {{1,0,0,1,1,0},{1,0,1,0,1,0},{0,1,1,0,1,1},{0,0,1,0,0,0},{1,1,0,1,1,0},{0,1,0,0,0,0}};
+        int[][] game_board = {{0, 0, 0}, {1, 1, 0}, {1, 1, 1}};
+        int[][] table = {{1, 1, 1}, {1, 0, 0}, {0, 0, 0}};
 
         FillPuzzle2 fillPuzzle = new FillPuzzle2();
         int answer = fillPuzzle.solution(game_board, table);
