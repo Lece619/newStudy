@@ -12,6 +12,7 @@
       <module fileurl="file://$PROJECT_DIR$/backjoon/geometry/geometry.iml" filepath="$PROJECT_DIR$/backjoon/geometry/geometry.iml" />
       <module fileurl="file://$PROJECT_DIR$/backjoon/heap/heap.iml" filepath="$PROJECT_DIR$/backjoon/heap/heap.iml" />
       <module fileurl="file://$PROJECT_DIR$/backjoon/integerQ/integerQ.iml" filepath="$PROJECT_DIR$/backjoon/integerQ/integerQ.iml" />
+      <module fileurl="file://$PROJECT_DIR$/programmers/kakao/kakao.iml" filepath="$PROJECT_DIR$/programmers/kakao/kakao.iml" />
       <module fileurl="file://$PROJECT_DIR$/programmers/level1/level1.iml" filepath="$PROJECT_DIR$/programmers/level1/level1.iml" />
       <module fileurl="file://$PROJECT_DIR$/programmers/level2/level2.iml" filepath="$PROJECT_DIR$/programmers/level2/level2.iml" />
       <module fileurl="file://$PROJECT_DIR$/programmers/level3/level3.iml" filepath="$PROJECT_DIR$/programmers/level3/level3.iml" />

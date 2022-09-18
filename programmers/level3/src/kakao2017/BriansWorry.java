@@ -39,13 +39,14 @@ public class BriansWorry {
              }
              smallWord.get(key).add(i);
              checkRule = false;
+
+
         }
+
         if(checkRule){
             return sentence;
         }
         makeResult(sentence);
-
-
 
         return isInvalid ? "invalid" : sb.toString().replaceAll("  ", " ").trim();
     }
@@ -99,7 +100,7 @@ public class BriansWorry {
         int start = checkArray.get(0) - 1;
         int end = checkArray.get(checkArray.size()-1) + 2;
 
-        if(start <= idx){
+        if(start <= idx || (end-1) == sentence.length()){
             isInvalid = true;
             return;
         }
@@ -131,7 +132,7 @@ public class BriansWorry {
 
 
     public static void main(String[] args) {
-        String sentence = "bWORLDbHaEaLaLaO";
+        String sentence = "bWORLDbHaEaLaLaOa";
         BriansWorry briansWorry = new BriansWorry();
         System.out.println("briansWorry.solution(sentence) = " + briansWorry.solution(sentence));
     }
