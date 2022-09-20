@@ -46,7 +46,6 @@ public class SearchRanking2 {
             }
             answerList.add(count);
         }
-        System.out.println(answerList);
         Integer[] answer = answerList.toArray(new Integer[0]);
         return answer;
     }

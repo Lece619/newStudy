@@ -41,7 +41,6 @@ public class SearchRanking {
             String[] queryArr = s.replaceAll("[ ]+[a]+[n]+[d]","").split(" ");
             int count = 0;
             int score = Integer.parseInt(queryArr[4]);
-
             for (String s1 : applicant.keySet()) {
                 boolean check = true;
                 for (int i = 0; i <4; i++) {
