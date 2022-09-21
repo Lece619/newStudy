@@ -6,7 +6,6 @@ https://school.programmers.co.kr/learn/courses/30/lessons/72414
 
 package kakao2021;
 
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;

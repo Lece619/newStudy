@@ -34,6 +34,12 @@ public class SharedTaxi {
             fareArray[fare[1]][fare[0]] = fare[2];
         }
 
+        for (int i = 0; i < fareArray.length; i++) {
+            for (int j = 0; j < fareArray.length; j++) {
+                System.out.print(fareArray[i][j] + " \t\t");
+            }
+            System.out.println();
+        }
         for (int k = 1; k < n+1; k++) {
             for(int i = 1; i <= n; i++){
                 for(int j = 1; j<=n; j++){
