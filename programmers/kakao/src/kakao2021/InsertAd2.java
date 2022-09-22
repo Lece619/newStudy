@@ -7,7 +7,6 @@ https://school.programmers.co.kr/learn/courses/30/lessons/72414
 package kakao2021;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 
@@ -17,18 +16,44 @@ public class InsertAd2 {
     HashMap<Integer, String> adPlayMap = new HashMap<>();
 
     public String solution(String play_time, String adv_time, String[] logs) {
-        String answer = "";
+        String answer = "00:00:00";
+        int maxTotal = 0;
         int runningTime = makeTimeToSec(adv_time);
-        System.out.println("runningTime = " + runningTime);
 
         Collections.addAll(logList, logs);
         Collections.sort(logList);
-
+        int playTime = makeTimeToSec(play_time);
 
         for (int i = 0; i < logList.size(); i++) {
-            String advEndTime = makeEndTime(logList.get(i), runningTime);
+            int advEndTime = makeEndTime(logList.get(i), runningTime);
+
+            if(advEndTime > playTime){
+                break;
+            }
+
+            int advStartTime = advEndTime - runningTime;
+            int totalRunningTime = 0;
+
+            for (int j = 0; j < logList.size(); j++) {
+                String[] s = logList.get(j).split("-");
+                int startTime = makeTimeToSec(s[0]);
+                int endTime = makeTimeToSec(s[1]);
+                if (startTime >= advEndTime) {
+                    break;
+                }
+                if(endTime <= advStartTime) {
+                    continue;
+                }
+                totalRunningTime += Math.min(endTime,advEndTime) - Math.max(startTime, advStartTime);
+//                System.out.println("Math.min(endTime,advEndTime) = " + Math.min(endTime,advEndTime));
+//                System.out.println("Math.max(startTime, advStartTime) = " + Math.max(startTime, advStartTime));
+            }
+
+            if(maxTotal < totalRunningTime){
+                maxTotal = totalRunningTime;
+                answer = logList.get(i).split("-")[0];
+            }
         }
-        System.out.println("logList = " + logList);
 
         return answer;
     }
@@ -41,9 +66,9 @@ public class InsertAd2 {
         return hour * 60 * 60 + min * 60 + sec;
     }
 
-    private String makeEndTime(String logTime, int runningTime) {
-        String[] startTime = logTime.split("-")[0].split(":");
-        return "";
+    private int makeEndTime(String logTime, int runningTime) {
+        String startTime = logTime.split("-")[0];
+        return runningTime + makeTimeToSec(startTime);
     }
 
 
