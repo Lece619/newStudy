@@ -6,38 +6,40 @@ https://school.programmers.co.kr/learn/courses/30/lessons/72414
 
 package kakao2021;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-
 public class InsertAd3 {
 
-    ArrayList<String> logList = new ArrayList<>();
-    HashMap<Integer, String> adPlayMap = new HashMap<>();
-
     public String solution(String play_time, String adv_time, String[] logs) {
-        String answer = "00:00:00";
-        int maxTotal = 0;
+
         int runningTime = makeTimeToSec(adv_time);
         int playTime = makeTimeToSec(play_time);
-        long[] viewTime = new long[playTime+1];
-
+        int[] viewTime = new int[playTime];
         for (int i = 0; i < logs.length; i++) {
             String[] s = logs[i].split("-");
             int startTime = makeTimeToSec(s[0]);
             int endTime = makeTimeToSec(s[1]);
-            for (int j = startTime; j <= endTime; j++) {
+            for (int j = startTime; j < endTime; j++) {
                 viewTime[j]++;
             }
         }
 
-        for (long l : viewTime) {
-            if(l==0){
-                continue;
-            }
-            System.out.print(l+ " ");
+        long totalSum = 0;
+        long maxSum = 0;
+        int time = 0;
+        for (int i = 0; i < runningTime; i++) {
+            totalSum += viewTime[i];
         }
-        return answer;
+        maxSum = totalSum;
+
+        for (int i = runningTime; i < playTime; i++) {
+            totalSum += viewTime[i] - viewTime[i-runningTime];
+            if(maxSum < totalSum){
+                maxSum = totalSum;
+                time = i-runningTime+1;
+            }
+
+        }
+
+        return makeTimeToString(time);
     }
 
     private int makeTimeToSec(String time) {
@@ -48,9 +50,11 @@ public class InsertAd3 {
         return hour * 60 * 60 + min * 60 + sec;
     }
 
-    private int makeEndTime(String logTime, int runningTime) {
-        String startTime = logTime.split("-")[0];
-        return runningTime + makeTimeToSec(startTime);
+    private String makeTimeToString(int time){
+        int hour = time/3600;
+        int min = (time%3600)/60;
+        int sec = (time%3600)%60;
+        return String.format("%02d:%02d:%02d",hour, min, sec);
     }
 
 
