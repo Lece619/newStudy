@@ -11,8 +11,6 @@ import java.util.HashSet;
 
 public class BriansWorry4 {
 
-    boolean[] rule1 = new boolean[1000];
-    boolean[] rule2 = new boolean[1000];
     public String solution(String sentence) {
 
         //공백 확인
@@ -20,9 +18,7 @@ public class BriansWorry4 {
             return "invalid";
         }
 
-        for (int i = 0; i < sentence.length(); i++){
-            
-        }
+
 
         return "";
     }

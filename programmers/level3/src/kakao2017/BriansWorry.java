@@ -17,6 +17,7 @@ public class BriansWorry {
     StringBuilder sb = new StringBuilder();
 
     int idx = -1;
+
     public String solution(String sentence) {
         String answer = "";
 
@@ -39,7 +40,6 @@ public class BriansWorry {
              }
              smallWord.get(key).add(i);
              checkRule = false;
-
 
         }
 
