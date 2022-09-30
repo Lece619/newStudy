@@ -4,8 +4,7 @@ https://school.programmers.co.kr/learn/courses/30/lessons/77486
         다단계 칫솔 판매
 */
 
-package devmatching2021;
-
+package devmatching;
 
 import java.util.HashMap;
 
