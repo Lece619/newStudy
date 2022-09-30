@@ -6,10 +6,14 @@ https://school.programmers.co.kr/learn/courses/30/lessons/1830
 
 package kakao2017;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
 public class BriansWorry4 {
+
+    ArrayList<Character> ruleWord = new ArrayList<>();
+    HashMap<String, ArrayList<Integer>> ruleIndex = new HashMap<>();
 
     public String solution(String sentence) {
 
@@ -18,9 +22,15 @@ public class BriansWorry4 {
             return "invalid";
         }
 
+        findRuleWord(sentence);
+
 
 
         return "";
+    }
+
+    private void findRuleWord(String sentence) {
+        
     }
 
 
