@@ -11,6 +11,7 @@ public class VirusMultiple {
 
     public static void main(String[] args) {
         VirusMultiple virusMultiple = new VirusMultiple();
+        String a = "a";
         int solution = virusMultiple.solution(2, 10);
         System.out.println("solution = " + solution);
     }
