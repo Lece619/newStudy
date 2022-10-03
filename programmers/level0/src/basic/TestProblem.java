@@ -54,6 +54,7 @@ public class TestProblem {
     }
     public String solution2(String s) {
         HashSet<String> set = new HashSet<>();
+        s = "hello";
         Map<String, Long> collect = Arrays.stream(s.split("")).collect(Collectors.groupingBy(a -> a, Collectors.counting()));
         System.out.println("collect = " + collect);
         for (int i = 0; i < s.length(); i++) {
