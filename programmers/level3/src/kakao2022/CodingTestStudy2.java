@@ -8,58 +8,40 @@ package kakao2022;
 
 public class CodingTestStudy2 {
 
-    int[][] aplCop;
+    int[][] dp;
     public int solution(int alp, int cop, int[][] problems) {
-        aplCop = new int[251][251];
-        int targetAlp = 0;
-        int targetCop = 0;
+        int targetAlp = alp;
+        int targetCop = cop;
 
-        for (int i = alp - 1; i < 250; i++) {
-            for (int j = cop - 1; j < 250; j++) {
-                aplCop[i+1][j+1] = Math.abs( i - alp - 1 + j - cop -1) ;
-            }
-        }
         for (int[] problem : problems) {
             targetAlp = Math.max(problem[0],targetAlp);
             targetCop = Math.max(problem[1],targetCop);
         }
 
-        int algo = alp + 1;
-        int code = cop + 1;
-
-        while(algo < targetAlp+1 && code < targetCop+1){
-
-            algo = Math.min(targetAlp+1, algo);
-            code = Math.min(targetCop+1, code);
-
-            aplCop[algo][code] = Math.min(aplCop[algo][code],aplCop[algo][code-1] + 1);
-            aplCop[algo][code] = Math.min(aplCop[algo][code],aplCop[algo-1][code] + 1);
-            makeArrs(algo, code, problems);
-
-            aplCop[algo][code+1] = Math.min(aplCop[algo][code+1],aplCop[algo][code] + 1);
-            aplCop[algo][code+1] = Math.min(aplCop[algo][code+1],aplCop[algo-1][code+1] + 1);
-            makeArrs(algo, code+1, problems);
-
-            aplCop[algo+1][code] = Math.min(aplCop[algo+1][code],aplCop[algo+1][code-1] + 1);
-            aplCop[algo+1][code] = Math.min(aplCop[algo+1][code],aplCop[algo][code] + 1);
-            makeArrs(algo+1, code, problems);
-
-            algo++;
-            code++;
-        }
-
-        return aplCop[Math.max(alp+1,targetAlp+1)][Math.max(cop+1,targetCop+1)];
-    }
-
-    private void makeArrs(int alp, int cop, int[][] problems) {
-        for (int[] problem : problems) {
-            if(alp < problem[0] || cop < problem[1]){
-                continue;
+        dp = new int[targetAlp+2][targetCop+2];
+        for (int i = alp; i < dp.length; i++) {
+            for (int j = cop; j < dp[0].length; j++) {
+                dp[i][j] = Integer.MAX_VALUE;
             }
-            aplCop[alp + problem[2]][cop + problem[3]] = Math.min(aplCop[alp + problem[2]][cop + problem[3]]
-                                                                    , aplCop[alp][cop] + problem[4]);
         }
+        dp[alp][cop] = 0;
+
+        for (int i = alp; i <= targetAlp; i++) {
+            for (int j = cop; j <= targetCop; j++) {
+                dp[i+1][j] = Math.min(dp[i+1][j],dp[i][j]+1);
+                dp[i][j+1] = Math.min(dp[i][j+1],dp[i][j]+1);
+
+                for (int[] problem : problems) {
+                    if(i >= problem[0] && j >= problem[1]){
+                        dp[Math.min(i+problem[2],targetAlp)][Math.min(j+problem[3],targetCop)]
+                                = Math.min(dp[Math.min(i+problem[2],targetAlp)][Math.min(j+problem[3],targetCop)],dp[i][j]+problem[4]);
+                    }
+                }
+            }
+        }
+        return dp[targetAlp][targetCop];
     }
+
 
     public static void main(String[] args) {
         int alp = 10;
