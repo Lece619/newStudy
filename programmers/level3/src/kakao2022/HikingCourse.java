@@ -24,17 +24,6 @@ public class HikingCourse {
         for (int i = 0; i < n+1; i++) {
             for (int j = 0; j < n+1; j++) {
                 routPath[i][j] = 10_000_000;
-
-                if(i == j){
-                    routPath[i][j] = 0;
-                }else{
-                    if(gateSet.contains(i) && gateSet.contains(j)){
-                        routPath[i][j] = 0;
-                    }
-                    if(summitsSet.contains(i) && summitsSet.contains(j)){
-                        routPath[i][j] = 1000000;
-                    }
-                }
             }
         }
 
@@ -46,17 +35,12 @@ public class HikingCourse {
         for (int i = 1; i < n + 1; i++) {
             for (int j = 1; j < n + 1; j++) {
                 for (int k = 1; k < n+1; k++) {
-                    if(routPath[i][j] == 0 || routPath[i][k] == 0 || routPath[k][j] == 0){
+                    if(summitsSet.contains(i) && summitsSet.contains(j)){
                         continue;
                     }
                     routPath[i][j] = Math.min(routPath[i][j], Math.max(routPath[i][k], routPath[k][j]));
-                    routPath[j][i] = routPath[i][j];
                 }
 
-                if(summitsSet.contains(i) && summitsSet.contains(j)){
-                    routPath[i][j] = 100;
-                    routPath[j][i] = 100;
-                }
             }
         }
 
@@ -65,15 +49,15 @@ public class HikingCourse {
         int summitGate = 0;
         for (int summit : summits) {
             for (int i = 0; i < gates.length; i++) {
-                for (int j = 0; j < gates.length; j++) {
-                    int inten = Math.max(routPath[gates[i]][summit], routPath[summit][gates[j]]);
+                    int inten = routPath[gates[i]][summit];
                     if(intensity > inten){
                         summitGate = summit;
                         intensity = inten;
                     }
-                }
             }
+
         }
+
         for (int[] ints : routPath) {
             for (int ints1 : ints) {
                 System.out.print(ints1+"\t\t");
@@ -89,9 +73,9 @@ public class HikingCourse {
         HikingCourse hikingCourse = new HikingCourse();
 
         int n = 7;
-        int[][] paths = {{1, 2, 5}, {1, 4, 1}, {2, 3, 1}, {2, 6, 7}, {4, 5, 1}, {5, 6, 1}, {6, 7, 1}};
-        int[] gates = {3, 7};
-        int[] summits = {1, 5};
+        int[][] paths = {{1, 4, 4}, {1, 6, 1}, {1, 7, 3}, {2, 5, 2}, {3, 7, 4}, {5, 6, 6}};
+        int[] gates = {1};
+        int[] summits = {2, 3, 4};
 
         int[] solution = hikingCourse.solution(n, paths, gates, summits);
 
