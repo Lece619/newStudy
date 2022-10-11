@@ -19,6 +19,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class HikingCourse2 {
+
     ArrayList<ArrayList<Area>> graph = new ArrayList<>();
     int[] intensities;
     Set<Integer> summitsSet;
@@ -32,6 +33,7 @@ public class HikingCourse2 {
             graph.get(path[1]).add(new Area(path[0],path[2]));
         }
         Arrays.fill(intensities,Integer.MAX_VALUE);
+        //도착점 Set에 담아준다.
         summitsSet = Arrays.stream(summits).mapToObj(i -> (Integer) i).collect(Collectors.toSet());
         for (int gate : gates) {
             queue.offer(new Area(gate, 0));
@@ -42,8 +44,6 @@ public class HikingCourse2 {
         return findMin();
     }
 
-
-
     private void dijkstra() {
 
         while (!queue.isEmpty()){
@@ -53,6 +53,7 @@ public class HikingCourse2 {
             if(intensities[nowNum] < nowIntens){
                 continue;
             }
+            //도착지라면 진행하지 않는다.
             if (summitsSet.contains(nowNum)) {
                 continue;
             }
@@ -64,8 +65,6 @@ public class HikingCourse2 {
                 }
             }
         }
-
-
     }
 
     private int[] findMin() {
@@ -112,9 +111,8 @@ public class HikingCourse2 {
         int[] summits = {1, 5};
 
         int[] solution = hikingCourse.solution(n, paths, gates, summits);
-        System.out.println("solution = " + solution);
         for (int i : solution) {
-            System.out.println(i);
+            System.out.print(i+ " ");
         }
     }
 }
