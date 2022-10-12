@@ -15,12 +15,16 @@ public class DartCount {
         int[] answer = new int[2];
         int[] n = new int[61];
 
-        Map<Integer, Integer> collect = IntStream.rangeClosed(0, 60).boxed().collect(Collectors.toMap(i -> i, i -> i <= 20 || i == 50 ? 1 : i % 3 ==0 ? 0 : 1));
+        Map<Integer, Integer> collect = IntStream.rangeClosed(0, 60).boxed().collect(Collectors.toMap(i -> i, i -> i <= 20 || i == 50 ? 1 : i % 3 == 0 ? 0 : 1));
         collect.put(0,0);
+
         for (int i = 1; i < 61; i++) {
             if(i <= 20 || i % 3 == 0 ){
                 n[i] = 1;
-            }else{
+            } else if (i<=40 && i % 2 == 0) {
+                collect.put(i,1);
+                n[i] = 1;
+            } else{
                 n[i] = 2;
             }
         }
@@ -49,7 +53,6 @@ public class DartCount {
             answer[0] += tri;
             answer[1] = triSub;
         }
-        System.out.println("collect = " + collect);
 
         return answer;
     }
