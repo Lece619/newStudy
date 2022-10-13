@@ -1,7 +1,7 @@
 /*
 https://school.programmers.co.kr/learn/courses/30/lessons/131705
         연습문제
-        삼총사 
+        삼총사
 */
 package normal;
 
