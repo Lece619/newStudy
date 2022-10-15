@@ -2,7 +2,7 @@ package basic2;
 
 
 import java.util.ArrayList;
-import java.util.stream.Collectors;
+import java.util.stream.*;
 
 public class MakeBFromA {
     public int solution(String before, String after) {
