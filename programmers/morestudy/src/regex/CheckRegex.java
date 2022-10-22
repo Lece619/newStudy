@@ -14,5 +14,10 @@ public class CheckRegex {
         Matcher m = p.matcher(str);
         System.out.println("m.find() = " + m.find());
         System.out.println("Pattern.matches(re,str) = " + Pattern.matches(sb.toString(), str));
+        System.out.println("Pattern.matches(re,str) = " + Pattern.matches(re,str));
+        System.out.println("m.matches() = " + m.matches());
+        System.out.println("re = " + re);
+        System.out.println("p = " + p);
+        System.out.println("m = " + m);
     }
 }
