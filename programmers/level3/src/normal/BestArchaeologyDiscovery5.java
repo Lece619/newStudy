@@ -47,6 +47,18 @@ public class BestArchaeologyDiscovery5 {
                               {3, 2, 2, 3},
                               {0, 3, 2, 0},
                               {0, 3, 3, 3}};
+        /*
+        3 4 4 3
+        7 2 3 7
+        6 5 5 4
+        6 3 2 3
+
+        3 0 0 3
+        3 2 3 3
+        2 1 1 0
+        2 3 2 3
+
+        */
 
         // 0은 12시 방향, 1은 3시 방향, 2는 6시 방향, 3은 9시 방향
         int solution = bestArchaeologyDiscovery.solution(clockHands);
