@@ -12,9 +12,11 @@ public class BestArchaeologyDiscovery {
     int targetX = 0;
     int targetY = 0;
     int minSum;
+    int[][] countHands;
 
     public int solution(int[][] clockHands) {
         minSum = checkZero2(clockHands);
+        countHands = new int[clockHands.length][clockHands.length];
         dfs(0, clockHands, 0, 0);
         int step = 0;
 //        while(!checkZero(clockHands)){
@@ -48,7 +50,9 @@ public class BestArchaeologyDiscovery {
     }
 
     private void dfs(int step, int[][] clockHands, int x, int y) {
-
+        if(countHands[x][y] == 3){
+            return;
+        }
         if(checkZero(clockHands)){
             answer = Math.min(step, answer);
         }else{
@@ -57,22 +61,12 @@ public class BestArchaeologyDiscovery {
             for (int i = 0; i < len; i++) {
                 for (int j = 0; j < len; j++) {
                     if(clockHands[i][j] != 0){
+                        countHands[i][j]++;
                         step++;
                         rotationHands(clockHands, 1, i, j);
-                        int sum = checkZero2(clockHands);
-                        if(minSum >= sum){
-                            System.out.println("sum = " + sum + " i :" + i + " j : "+ j);
-                            for (int[] clockHand : clockHands) {
-                                for (int i1 : clockHand) {
-                                    System.out.print(" " + i1);
-                                }
-                                System.out.println();
-                            }
-                            System.out.println();
-                            minSum = sum;
-                            dfs(step, clockHands, i, j);
-                        }
+                        dfs(step, clockHands, i, j);
                         rotationHands(clockHands, 3, i, j);
+                        countHands[i][j]--;
                         step--;
                     }
                 }

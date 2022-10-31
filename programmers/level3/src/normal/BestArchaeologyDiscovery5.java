@@ -12,12 +12,33 @@ public class BestArchaeologyDiscovery5 {
     public int solution(int[][] clockHands) {
 
         int answer = 0;
+        int[][] checkRotation = new int[clockHands.length][clockHands.length];
 
-        System.out.println(Math.pow(5, 64));
 
+
+        for (int[] ints : clockHands) {
+            for (int anInt : ints) {
+                System.out.print("\t" + anInt);
+            }
+            System.out.println();
+        }
+        System.out.println();
         return answer;
     }
 
+    private void rotationInPoint(int[][] clockHands, int row, int col, int step) {
+        int startRow = Math.max(row - 1, 0);
+        int endRow = Math.min(row + 1, clockHands.length - 1);
+        int startCol = Math.max(col - 1, 0);
+        int endCol = Math.min(col + 1, clockHands.length - 1);
+        for (int i = startRow; i <= endRow; i++) {
+            clockHands[i][col] = (clockHands[i][col] + step) % 4;
+        }
+        for (int i = startCol; i <= endCol; i++) {
+            clockHands[row][i] = (clockHands[row][i] + step) % 4;
+        }
+        clockHands[row][col] = (clockHands[row][col] + 3) % 4;
+    }
 
 
     public static void main(String[] args) {
