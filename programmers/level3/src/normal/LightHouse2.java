@@ -7,48 +7,24 @@ https://school.programmers.co.kr/learn/courses/30/lessons/133500
 package normal;
 
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.stream.IntStream;
 
 public class LightHouse2 {
     int answer = 0;
     public int solution(int n, int[][] lighthouse) {
 
-        int[] lights = new int[n+1];
-        boolean[] onLight = new boolean[n+1];
-
-        while(makeLight(lighthouse, lights, onLight) != 0){
-            ;
+        ArrayList<ArrayList<Integer>> linked = new ArrayList<>();
+        IntStream.rangeClosed(0,n).forEach(i->linked.add(new ArrayList<>()));
+        for (int[] ints : lighthouse) {
+            linked.get(ints[0]).add(ints[1]);
+            linked.get(ints[1]).add(ints[0]);
         }
-        return answer;
+
+        return 0;
     }
 
-    private int makeLight(int[][] lighthouse, int[] lights, boolean[] onLight) {
-        int max = 0;
-
-        Arrays.fill(lights, 0);
-        lights[0] = -1;
-
-        for (int[] light : lighthouse) {
-            if(!onLight[light[0]] && !onLight[light[1]]){
-                lights[light[0]]++;
-                lights[light[1]]++;
-                max = Math.max(lights[light[0]], max);
-                max = Math.max(lights[light[1]], max);
-            }
-        }
-
-        if(max==0){
-            return max;
-        }
-        for (int i = 0; i < lights.length; i++) {
-            if(lights[i] == max){
-                onLight[i] = true;
-                answer++;
-                break;
-            }
-        }
-        return max;
-    }
 
 
     public static void main(String[] args) {
