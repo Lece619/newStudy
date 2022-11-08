@@ -24,33 +24,34 @@ public class TrafficOfThanksGiving {
             }
         }).collect(Collectors.toList());
 
-        Queue<Log> queue = new PriorityQueue<>(new Comparator<Log>() {
-            @Override
-            public int compare(Log o1, Log o2) {
-                return (int) (o1.end - o2.end);
-            }
-        });
-
-        for (int i = 0; i < list.size(); i++) {
-
-        }
+        ArrayList<Log> running = new ArrayList<>();
 
         for (Log log : list) {
             long start = log.start;
             long logCheck = start + 999;
 
+            running.add(log);
 
-            while(!queue.isEmpty() && queue.peek().end < logCheck && queue.peek().end < start){
-                queue.poll();
-            }
-            queue.add(log);
+            running = makeRunning(start, logCheck, running);
 
-            System.out.println("queue = " + queue);
+            answer = Math.max(answer, running.size());
 
-            answer = Math.max(answer, queue.size());        }
+            long end = log.end;
+            logCheck = end + 999;
 
+            running = makeRunning(end, logCheck, running);
+            answer = Math.max(answer, running.size());
+
+        }
 
         return answer;
+    }
+
+    private ArrayList<Log> makeRunning(long start, long logCheck, ArrayList<Log> running) {
+
+        List<Log> result = running.stream().filter(log -> !(log.start > logCheck || log.end < start)).collect(Collectors.toList());
+
+        return (ArrayList<Log>) result;
     }
 
     static class Log {
