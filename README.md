@@ -11,3 +11,5 @@
 
 kakao blind test 22.09.24
 line coding test 22.09.24
+db inc           22.10.27
+kakao winter intern 22.11.03
