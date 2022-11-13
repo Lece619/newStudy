@@ -4,7 +4,7 @@ https://school.programmers.co.kr/learn/courses/30/lessons/131702
         고고학 최고의 발견
 */
 
-package normal;
+package solved_yet;
 
 public class BestArchaeologyDiscovery5 {
 

@@ -4,10 +4,7 @@ https://school.programmers.co.kr/learn/courses/30/lessons/17676
         [1차] 추석 트래픽
 */
 
-package kakao2018;
-
-import java.util.*;
-import java.util.stream.Collectors;
+package solved_yet;
 
 public class TrafficOfThanksGiving2 {
 
