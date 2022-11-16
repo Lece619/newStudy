@@ -9,6 +9,8 @@ package hash;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class PhoneNumberBook {
@@ -29,6 +31,22 @@ public class PhoneNumberBook {
                      return false;
                  }
             }
+        }
+
+        Set<String> numbers = new HashSet<>();
+        for (String num : phone_book) {
+            for (String number : numbers) {
+                if(num.equals(number)){
+                    continue;
+                }
+                if(num.startsWith(number)){
+                    return false;
+                }
+                if(number.startsWith(num)){
+                    return false;
+                }
+            }
+            numbers.add(num);
         }
 
         return answer;
