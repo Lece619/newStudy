@@ -26,12 +26,10 @@ public class RightBracket {
     }
 
     private boolean checkChars(Stack<Character> chars, char nowChar) {
-        if(nowChar == '('){
+        if(nowChar == '(')
             return chars.add(nowChar);
-        }
-        if(chars.isEmpty()){
+        if(chars.isEmpty())
             return false;
-        }
         if(chars.peek() == '('){
             chars.pop();
             return true;
