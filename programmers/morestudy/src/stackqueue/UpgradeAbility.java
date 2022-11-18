@@ -6,9 +6,8 @@ https://school.programmers.co.kr/learn/courses/30/lessons/42586
 
 package stackqueue;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class UpgradeAbility {
     public int[] solution(int[] progresses, int[] speeds) {
