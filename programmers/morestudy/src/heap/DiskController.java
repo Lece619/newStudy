@@ -17,17 +17,19 @@ public class DiskController {
         boolean[] done = new boolean[jobs.length];
         int count = jobs.length;
         int time = 0;
+        Arrays.sort(jobs, Comparator.comparingInt(a -> a[1]));
         Arrays.sort(jobs, Comparator.comparingInt(a -> a[0]));
 
 
         while(count-- > 0){
 
             PriorityQueue<Job> nextJobTime = getJobs(jobs, done, time);
-            Job nextJob = nextJobTime.poll();
+            Job nextJob = nextJobTime.peek();
 
-            answer += nextJob.getTime(time);
-            time = time + nextJob.getTerm() + Math.max(0, nextJob.getStart() - time);
+            answer += nextJob.getNextTime(time);
+            time = Math.max(time, nextJob.getStart()) + nextJob.getTerm();
             done[nextJob.getIdx()] = true;
+            System.out.println("time = " + time);
         }
     
         return answer / jobs.length;
@@ -37,22 +39,28 @@ public class DiskController {
         PriorityQueue<Job> nextJobTime = new PriorityQueue<>(new Comparator<Job>() {
             @Override
             public int compare(Job o1, Job o2) {
-                return o1.getTime(time) - o2.getTime(time);
+                if(o1.getNextTime(time) == o2.getNextTime(time)){
+                    return o1.getStart() - o2.getStart();
+                }
+                return o1.getNextTime(time) - o2.getNextTime(time);
             }
         });
 
         for (int i = 0; i < jobs.length; i++) {
             int[] job = jobs[i];
+            System.out.println("new Job(i, job[0], job[1]) = " + new Job(i, job[0], job[1]));
             if(time < job[0]){
                 if(nextJobTime.isEmpty() && !done[i]){
                     nextJobTime.add(new Job(i, job[0], job[1]));
                     break;
                 }
+                break;
             }
             if(!done[i]) {
                 nextJobTime.add(new Job(i, job[0], job[1]));
             }
         }
+        System.out.println("nextJobTime = " + nextJobTime);
         return nextJobTime;
     }
 
@@ -71,8 +79,11 @@ public class DiskController {
             return term;
         }
 
-        public int getTime(int time){
-            return Math.max(term,time + term - start);
+        public int getNextTime(int time){
+            if(time >= start){
+                return time - start + term;
+            }
+            return term;
         }
 
         public int getIdx() {
@@ -82,14 +93,22 @@ public class DiskController {
         public int getStart() {
             return start;
         }
+
+        @Override
+        public String toString() {
+            return "Job{" +
+                    "idx=" + idx +
+                    ", start=" + start +
+                    ", term=" + term +
+                    '}';
+        }
     }
 
 
     public static void main(String[] args) {
-        int[][] jobs = {{0, 3}, {1, 9}, {2, 6}};
+        int[][] jobs = {{0, 3},{0 , 4}, {0, 2},{1, 2}};
         DiskController diskController = new DiskController();
         int solution = diskController.solution(jobs);
         System.out.println("solution = " + solution);
-
     }
 }
