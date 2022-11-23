@@ -14,7 +14,6 @@ public class SpeedTrap {
     public int solution(int[][] routes) {
 
         int answer = 0;
-        Arrays.sort(routes, Comparator.comparingInt(a->a[0]));
         Arrays.sort(routes, Comparator.comparingInt(a->a[1]));
 
         for (int i = 0; i < routes.length; i++) {
