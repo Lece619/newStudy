@@ -1,6 +1,6 @@
 package greedy;
 
-public class gymClothes {
+public class GymClothes {
     class Solution {
         public int solution(int n, int[] lost, int[] reserve) {
             int answer = n;
