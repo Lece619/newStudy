@@ -27,7 +27,7 @@ public class KnightsWeapon {
             }
         }
         result *= 2;
-        if(num % sqrt == 0){
+        if(sqrt % 1 == 0){
             result++;
         }
         if(result > limit){
