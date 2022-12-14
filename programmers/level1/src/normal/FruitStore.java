@@ -12,6 +12,7 @@ public class FruitStore {
         int[] sortedScore = Arrays.stream(score).boxed()
                 .sorted(Comparator.reverseOrder()).mapToInt(i -> i).toArray();
 
+        //스트림으로 변경 가능할것같음
         for (int i = 0; i < sortedScore.length; i++) {
             idx++;
             if(idx % m == 0){
