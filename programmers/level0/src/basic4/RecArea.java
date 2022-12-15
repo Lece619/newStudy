@@ -17,6 +17,7 @@ public class RecArea {
             }
         }
 
+        //가시성 확보 필요 더욱 확실하게 길이 구해보기
         return Math.abs( widthStart - widthEnd) * Math.abs( heightStart - heightEnd );
     }
 }
