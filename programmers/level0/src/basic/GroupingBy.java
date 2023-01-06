@@ -16,7 +16,8 @@ public class GroupingBy {
         Collections.sort(list);
 //다른방식풀기
 
-        Map<String, Long> collect = Arrays.stream(s.split("")).collect(Collectors.groupingBy(a -> a, Collectors.counting()));
+        Map<String, Long> collect = Arrays.stream(s.split(""))
+                .collect(Collectors.groupingBy(a -> a, Collectors.counting()));
         System.out.println("collect = " + collect);
 
         String collect1 = Arrays.stream(s.split("")).collect(Collectors.groupingBy(a -> a, Collectors.counting())).entrySet().stream()

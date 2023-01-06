@@ -6,11 +6,20 @@ https://school.programmers.co.kr/learn/courses/30/lessons/150370
 
 package kakao2023;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
 public class PrivateInfoTerm {
     public int[] solution(String today, String[] terms, String[] privacies) {
         int[] answer = {};
 //        28일 모든 달
-        
+        Map<String, Integer> limitDays = new HashMap<>();
+        Arrays.stream(terms)
+                .map(i->i.split(" "))
+                .forEach(i->limitDays.put(i[0], Integer.parseInt(i[1])));
+
+
         return answer;
     }
 
@@ -23,5 +32,37 @@ public class PrivateInfoTerm {
         for (int i : solution) {
             System.out.println(i);
         }
+
+        KakaoBuilder kakao = KakaoBuilder.getInstance().setId(1).setName("name");
     }
+}
+
+class KakaoBuilder{
+    int id;
+    String name;
+
+    private static final KakaoBuilder KAKAO_BUILDER = new KakaoBuilder();
+
+    private KakaoBuilder() {
+
+    }
+
+    public KakaoBuilder setId(int id) {
+        this.id = id;
+        return this;
+    }
+
+    public KakaoBuilder setName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public static KakaoBuilder getInstance(){
+        return KAKAO_BUILDER;
+    }
+
+    public void printId(){
+        System.out.println("id = " + id);
+    }
+
 }
