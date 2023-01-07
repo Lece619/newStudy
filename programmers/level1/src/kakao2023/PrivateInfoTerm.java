@@ -6,21 +6,33 @@ https://school.programmers.co.kr/learn/courses/30/lessons/150370
 
 package kakao2023;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class PrivateInfoTerm {
     public int[] solution(String today, String[] terms, String[] privacies) {
-        int[] answer = {};
+
 //        28일 모든 달
-        Map<String, Integer> limitDays = new HashMap<>();
+        Map<String, Long> limitDays = new HashMap<>();
         Arrays.stream(terms)
                 .map(i->i.split(" "))
-                .forEach(i->limitDays.put(i[0], Integer.parseInt(i[1])));
+                .forEach(i->limitDays.put(i[0], Long.parseLong(i[1]) * 28 ));
+        long todayDays = makeDaysByFormat(today);
 
-
+        List<Integer> removePrivacyNum = new ArrayList<>();
+        for (int i = 0; i < privacies.length; i++) {
+            String[] privacy = privacies[i].split(" ");
+            long limitDay = makeDaysByFormat(privacy[0]) + limitDays.get(privacy[1]);
+            if(limitDay <= todayDays){
+                removePrivacyNum.add(i+1);
+            }
+        }
+        int[] answer = removePrivacyNum.stream().mapToInt(i -> i).toArray();
         return answer;
+    }
+
+    private long makeDaysByFormat(String formattedDay) {
+        long[] yyyymmdd = Arrays.stream(formattedDay.split("\\.")).mapToLong(Long::parseLong).toArray();
+        return ( yyyymmdd[0] * 12 + yyyymmdd[1] ) * 28 + yyyymmdd[2];
     }
 
     public static void main(String[] args) {
