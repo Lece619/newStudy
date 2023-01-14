@@ -18,10 +18,12 @@ public class CantorBit {
 
         for (int i = 0; i < n; i++) {
             cantor = makeNextCantor(cantor);
+            System.out.println("cantor = " + cantor);
+            System.out.println("cantor = " + cantor.replaceAll("1","").length());
+            System.out.println("cantor = " + cantor.replaceAll("0","").length());
         }
 
 
-        System.out.println("cantor = " + cantor);
 
         return answer;
     }
@@ -34,7 +36,7 @@ public class CantorBit {
 
     public static void main(String[] args) {
         CantorBit cantorBit = new CantorBit();
-        int n = 2;
+        int n = 6;
         long l = 4;
         long r = 17;
         int solution = cantorBit.solution(n, l, r);
