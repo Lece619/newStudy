@@ -8,35 +8,43 @@ package normal2;
 
 public class CantorBit {
 
-    final static String CHANGE_ONE = "11011";
-    final static String TEMP_ZERO = "X";
-    final static String CHANGE_ZERO = "00000";
-
     public int solution(int n, long l, long r) {
-        int answer = 0;
-        String cantor = "1";
+        return (int)(countOne(n, r) - countOne(n, l-1));
+    }
 
-        for (int i = 0; i < n; i++) {
-            cantor = makeNextCantor(cantor);
-            System.out.println("cantor = " + cantor);
-            System.out.println("cantor = " + cantor.replaceAll("1","").length());
-            System.out.println("cantor = " + cantor.replaceAll("0","").length());
+    public long countOne(int n, long r){
+        if(r == 0){
+            return 0;
+        }
+        int powNum = findLimitPow(n, r);
+        long preBitsNum = (long) Math.pow(5, powNum);
+        long split = r / preBitsNum;
+        long remain = r % preBitsNum;
+
+        if(split==2){
+            remain = 0;
+        }
+        if(split>=3){
+            split--;
         }
 
-
-
-        return answer;
+        return (long) Math.pow(4, powNum) * split + countOne(powNum, remain);
     }
 
-    private String makeNextCantor(String cantor) {
-        return cantor.replaceAll("0", TEMP_ZERO)
-                .replaceAll("1",CHANGE_ONE)
-                .replaceAll(TEMP_ZERO,CHANGE_ZERO);
+    private int findLimitPow(int n, long r) {
+        int powNum;
+        for (powNum = 0; powNum < n; powNum++) {
+            if((long)Math.pow(5, powNum + 1) > r){
+                return powNum;
+            }
+        }
+        return powNum;
     }
+
 
     public static void main(String[] args) {
         CantorBit cantorBit = new CantorBit();
-        int n = 6;
+        int n = 2;
         long l = 4;
         long r = 17;
         int solution = cantorBit.solution(n, l, r);
