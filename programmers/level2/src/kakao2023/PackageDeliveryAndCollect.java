@@ -6,10 +6,49 @@ https://school.programmers.co.kr/learn/courses/30/lessons/150369
 
 package kakao2023;
 
+import java.util.Arrays;
+import java.util.Stack;
+
 public class PackageDeliveryAndCollect {
     public long solution(int cap, int n, int[] deliveries, int[] pickups) {
-        long answer = -1;
+        long answer = 0;
+        Stack<Integer> delivery = new Stack<>();
+        Arrays.stream(deliveries).forEach(delivery::add);
+        Stack<Integer> pickup = new Stack<>();
+        Arrays.stream(pickups).forEach(pickup::add);
+
+        int capacity = cap;
+        int move = 0;
+
+        while(true){
+            if(move == 0){
+                capacity = findCapacity(cap, delivery);
+            }
+            if(!delivery.isEmpty()){
+                move = Math.max(move, delivery.size());
+                capacity = deliveryBox(capacity, delivery);
+            }
+
+        }
+
         return answer;
+    }
+
+    private int deliveryBox(int capacity, Stack<Integer> delivery) {
+        if(delivery.peek() <= capacity){
+            return delivery.pop();
+        }
+
+        delivery.add(delivery.pop() - capacity);
+        return 0;
+    }
+
+    private int findCapacity(int cap, Stack<Integer> delivery) {
+        if( delivery.isEmpty() ){
+            return 0;
+        }
+        int sum = delivery.stream().mapToInt(i -> i).sum();
+        return Math.max(sum, cap);
     }
 
     public static void main(String[] args) {
