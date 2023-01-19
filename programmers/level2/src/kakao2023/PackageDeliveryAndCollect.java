@@ -17,7 +17,7 @@ public class PackageDeliveryAndCollect {
         Stack<Integer> pickup = new Stack<>();
         Arrays.stream(pickups).forEach(pickup::add);
 
-        int capacity = cap;
+        int capacity = 0;
         int move = 0;
 
         while(true){
@@ -29,6 +29,8 @@ public class PackageDeliveryAndCollect {
                 capacity = deliveryBox(capacity, delivery);
             }
 
+            break;
+
         }
 
         return answer;
@@ -36,7 +38,7 @@ public class PackageDeliveryAndCollect {
 
     private int deliveryBox(int capacity, Stack<Integer> delivery) {
         if(delivery.peek() <= capacity){
-            return delivery.pop();
+            return capacity - delivery.pop();
         }
 
         delivery.add(delivery.pop() - capacity);
