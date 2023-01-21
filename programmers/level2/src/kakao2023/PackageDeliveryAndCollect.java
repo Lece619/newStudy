@@ -32,9 +32,13 @@ public class PackageDeliveryAndCollect {
             break;
 
         }
+        //로직 생각하기 가장 먼 곳 ?
+        // 총 배달 해야할 곳 갯수 회수해야 할 곳 거리
+
+
         /*
         한번 더 생각해 볼 필요가 있을듯.
-        
+
          */
         return answer;
     }
