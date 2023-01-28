@@ -26,8 +26,8 @@ public class SeesawPartner {
             weightAll.add(i * 3);
             weightAll.add(i * 4);
         });
-        */
         answer = weights.length * 3 - (answer * 2 + weightAll.size());
+        */
         return answer;
     }
 
