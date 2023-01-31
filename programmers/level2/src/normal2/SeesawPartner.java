@@ -37,6 +37,7 @@ public class SeesawPartner {
                 }
             }
         }
+
         return answer;
     }
 
