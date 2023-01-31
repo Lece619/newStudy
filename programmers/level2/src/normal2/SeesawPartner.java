@@ -7,33 +7,43 @@ https://school.programmers.co.kr/learn/courses/30/lessons/152996
 
 package normal2;
 
+
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class SeesawPartner {
     public long solution(int[] weights) {
         long answer = 0;
-        /* 틀린로직 다시생각
-        Set<Integer> weightAll = new HashSet<>();
 
-        Arrays.stream(weights).forEach(weightAll::add);
-        answer = weights.length - weightAll.size();
+        for (int i = 0; i < weights.length - 1; i++) {
+            for (int j = i + 1; j < weights.length; j++) {
+                int target1 = weights[i];
+                int target2 = weights[j];
+                boolean flag = false;
 
-        weightAll.clear();
-        Arrays.stream(weights).forEach(i->{
-            weightAll.add(i * 2);
-            weightAll.add(i * 3);
-            weightAll.add(i * 4);
-        });
-        answer = weights.length * 3 - (answer * 2 + weightAll.size());
-        */
+                for (int k = 2; k <= 4; k++) {
+                    if(flag){
+                        continue;
+                    }
+                    for (int l = 2; l <= 4; l++) {
+                        if(target1 * k == target2 * l){
+                            answer++;
+                            flag = true;
+                        }
+                    }
+                }
+            }
+        }
         return answer;
     }
 
+
     public static void main(String[] args) {
         SeesawPartner seesawPartner = new SeesawPartner();
-        int[] weights = {100,180,360,100,270};
+        int[] weights = {100, 180, 360, 100, 270};
         long solution = seesawPartner.solution(weights);
         System.out.println("solution = " + solution);
     }
