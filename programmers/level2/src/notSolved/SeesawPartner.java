@@ -5,14 +5,8 @@ https://school.programmers.co.kr/learn/courses/30/lessons/152996
 */
 
 
-package normal2;
+package notSolved;
 
-
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class SeesawPartner {
     public long solution(int[] weights) {
