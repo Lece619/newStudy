@@ -2,7 +2,10 @@
 - level 1, level 2 완료
 - level 3 풀이중
 인증 level2
+
 인증 level3 준비
+
+일주일 2개씩 매주 기록 필요
 
 # 백준 문제 풀이
 
