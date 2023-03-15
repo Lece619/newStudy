@@ -36,6 +36,7 @@ public class SeesawPartner {
     }
 
 
+    //천천히 다시 풀이필요
     public static void main(String[] args) {
         SeesawPartner seesawPartner = new SeesawPartner();
         int[] weights = {100, 180, 360, 100, 270};
