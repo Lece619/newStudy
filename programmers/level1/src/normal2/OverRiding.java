@@ -11,5 +11,5 @@ public class OverRiding {
         int answer = 0;
         return answer;
     }
-    
+
 }
