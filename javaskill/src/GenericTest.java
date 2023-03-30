@@ -32,7 +32,7 @@ public class GenericTest <T> {
         genericTest.data =1;
 
 
-        System.out.println("data1 = " + (genericTest.data() + 1));
-
+//        System.out.println("data1 = " + (genericTest.data() + 1));
+//
     }
 }
