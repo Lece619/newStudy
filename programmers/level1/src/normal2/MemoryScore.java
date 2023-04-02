@@ -11,4 +11,17 @@ public class MemoryScore {
         int[] answer = {};
         return answer;
     }
+
+    public static void main(String[] args) {
+        String[] name = {};
+        int[] yearning = {};
+        String[][] photo = {{}};
+
+        MemoryScore memoryScore = new MemoryScore();
+        int[] solution = memoryScore.solution(name, yearning, photo);
+        for (int i : solution) {
+            System.out.println(i);
+        }
+
+    }
 }
