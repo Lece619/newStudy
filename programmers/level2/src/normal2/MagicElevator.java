@@ -6,9 +6,32 @@ https://school.programmers.co.kr/learn/courses/30/lessons/148653
 package normal2;
 
 
+import java.util.Arrays;
+
 public class MagicElevator {
     public int solution(int storey) {
-        String floor = String.valueOf(storey);
+        int answer = 0;
+        int[] floors = new StringBuilder().append(storey).reverse()
+                .chars().mapToObj(i->(char)i)
+                .mapToInt((i -> Integer.parseInt(String.valueOf(i)))).toArray();
+
+        for (int i = 0; i < floors.length - 1; i++) {
+            int nowFloor = floors[i];
+            int nextFloor = floors[i + 1];
+
+            int nowDown = nowFloor + Math.min(nextFloor, 10 - nextFloor);
+            int nowUp = 10 - nowFloor  + Math.min(nextFloor + 1, 10 - (nextFloor + 1));
+
+            if(nowDown < nowUp){
+                answer += nowFloor;
+                continue;
+            }
+
+            answer = 10 - nowFloor;
+
+        }
+
+
         //dp를 사용한 알고리즘 필요
         return 0;
     }
