@@ -9,7 +9,7 @@ package normal2;
 public class MagicElevator {
     public int solution(int storey) {
         String floor = String.valueOf(storey);
-        //dp를 사용한 알고리즘 필요 
+        //dp를 사용한 알고리즘 필요
         return 0;
     }
     public static void main(String[] args) {
