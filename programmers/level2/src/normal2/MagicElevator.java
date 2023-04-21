@@ -11,12 +11,13 @@ import java.util.Arrays;
 public class MagicElevator {
     public int solution(int storey) {
         int answer = 0;
-        int[] floors = new StringBuilder().append(storey).reverse()
-                .chars().mapToObj(i->(char)i)
-                .mapToInt((i -> Integer.parseInt(String.valueOf(i)))).toArray();
 
+        int index = 0;
 
-        //dp를 사용한 알고리즘 필요
+        while(storey > 0){
+            storey--;
+        }
+
         return 0;
     }
     public static void main(String[] args) {
