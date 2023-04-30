@@ -30,6 +30,7 @@
       <module fileurl="file://$PROJECT_DIR$/selfProject/starbucks/starbucks.iml" filepath="$PROJECT_DIR$/selfProject/starbucks/starbucks.iml" />
       <module fileurl="file://$PROJECT_DIR$/backjoon/stringbackjoon/stringbackjoon.iml" filepath="$PROJECT_DIR$/backjoon/stringbackjoon/stringbackjoon.iml" />
       <module fileurl="file://$PROJECT_DIR$/backjoon/sumnum/sumnum.iml" filepath="$PROJECT_DIR$/backjoon/sumnum/sumnum.iml" />
+      <module fileurl="file://$PROJECT_DIR$/selfProject/vending_machine/vending_machine.iml" filepath="$PROJECT_DIR$/selfProject/vending_machine/vending_machine.iml" />
     </modules>
   </component>
 </project>
