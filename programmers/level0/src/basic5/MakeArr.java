@@ -13,7 +13,6 @@ public class MakeArr {
             answer[i] = arr[i];
         }
         return answer;
-
         //return Arrays.copyOf(arr, (int) Math.pow(2, Math.ceil(Math.log(arr.length) / Math.log(2))));
     }
 }
