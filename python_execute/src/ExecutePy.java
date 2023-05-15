@@ -9,7 +9,7 @@ public class ExecutePy {
         String[] cmd = new String[3];
         cmd[0] = "python";
         cmd[1] = "D:/study/git/newStudy/python_test/start_script.py";
-        cmd[2] = "script";
+        cmd[2] = "script.py";
         Runtime runtime = Runtime.getRuntime();
         Process process = runtime.exec(cmd);
 
@@ -19,5 +19,12 @@ public class ExecutePy {
         while ((line = br.readLine()) != null) {
             System.out.println(line);
         }
+
+        BufferedReader errorReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+        String errorLine = null;
+        while ((errorLine = errorReader.readLine()) != null) {
+            System.out.println(errorLine);
+        }
+        
     }
 }
