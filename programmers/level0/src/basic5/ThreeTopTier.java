@@ -14,6 +14,14 @@ public class ThreeTopTier {
                 .boxed().collect(Collectors.toMap(i -> rank[i], i -> i));
         List<Integer> rankKey = scores.keySet().stream().sorted().collect(Collectors.toList());
 
+//        return IntStream.range(0, rank.length)
+//                .filter(i -> attendance[i])
+//                .boxed()
+//                .sorted(Comparator.comparing(i -> rank[i]))
+//                .limit(3L)
+//                .reduce((current, next) -> current * 100 + next)
+//                .get();
+
         return scores.get(rankKey.get(0)) * 10000 + scores.get(rankKey.get(1)) * 100 + scores.get(rankKey.get(2));
     }
 
