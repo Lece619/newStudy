@@ -6,7 +6,6 @@ public class SubString {
         return answer;
     }
     public String[] solution(String my_string) {
-        String[] answer = {};
-        return answer;
+        return my_string.split(" ");
     }
 }
