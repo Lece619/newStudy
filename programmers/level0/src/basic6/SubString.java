@@ -5,4 +5,8 @@ public class SubString {
         int answer = 0;
         return answer;
     }
+    public String[] solution(String my_string) {
+        String[] answer = {};
+        return answer;
+    }
 }
