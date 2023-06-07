@@ -17,4 +17,17 @@ public class CollatzArr {
         }
         return answer.stream().mapToInt(i->i).toArray();
     }
+
+    public int[] solution(int[] arr, int[][] queries) {
+        for (int[] query : queries) {
+            changeArr(arr, query);
+        }
+        return arr;
+    }
+
+    private void changeArr(int[] arr, int[] query) {
+        int temp = arr[query[0]];
+        arr[query[0]] = arr[query[1]];
+        arr[query[1]] = temp;
+    }
 }
