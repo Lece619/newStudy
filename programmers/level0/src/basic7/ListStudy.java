@@ -12,7 +12,7 @@ public class ListStudy {
 
         for (int i : swapArr) {
             System.out.println(i);
-            
+
         }
         System.out.println();
 
