@@ -13,10 +13,9 @@ public class RemainString {
                 .collect(Collectors.joining());
     }
     public String[] solution(String my_string) {
-    public String[] solution(String my_string) {
         List<String> collect = IntStream.range(0, my_string.length()).mapToObj(i -> my_string.substring(i)).collect(Collectors.toList());
         Collections.sort(collect);
-        String[] answer = collect.toArray(new String[0]); 
+        String[] answer = collect.toArray(new String[0]);
         return answer;
     }
 }
