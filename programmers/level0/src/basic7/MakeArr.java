@@ -1,5 +1,6 @@
 package basic7;
 
+import java.util.Arrays;
 import java.util.Stack;
 
 public class MakeArr {
@@ -22,5 +23,9 @@ public class MakeArr {
         }
         nums.pop();
         makeNums(nums, num);
+    }
+
+    public int[] solution(String[] intStrs, int k, int s, int l) {
+        return Arrays.stream(intStrs).mapToInt(str -> Integer.parseInt(str.substring(s, s + l))).filter(num -> num > k).toArray();
     }
 }
