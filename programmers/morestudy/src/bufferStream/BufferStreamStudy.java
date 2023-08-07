@@ -9,9 +9,12 @@ import java.util.List;
 public class BufferStreamStudy {
     private static final byte[] DLT_SIGNATURE = {'D', 'L', 'T', ' '};
 
+
+    //수정
     public List<DLTLog> readDLTLogs(String filename) throws IOException {
         List<DLTLog> logs = new ArrayList<>();
         try (BufferedInputStream bis = new BufferedInputStream(new FileInputStream(filename))) {
+            //TODO : ByteBuffer byteBuffer = ByteBuffer.allocate(LOG_SIZE); // Define LOG_SIZE  사용
             int signatureIndex = 0;
             int b;
             while ((b = bis.read()) != -1) {
