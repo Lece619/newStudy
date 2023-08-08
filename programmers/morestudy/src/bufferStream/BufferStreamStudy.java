@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BufferStreamStudy {
-    private static final byte[] DLT_SIGNATURE = {'D', 'L', 'T', ' '};
+    private static final byte[] DLT_SIGNATURE = {0x44, 0x4C, 0x54, 0x01};
 
 
     //수정
