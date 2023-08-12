@@ -1,7 +1,7 @@
 # 프로그래머스
 - level 1, level 2 완료
 - level 3 풀이중
-인증 level2
+인증 level2 완료
 
 인증 level3 준비
 
